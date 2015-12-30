@@ -1,28 +1,32 @@
 const AppDispatcher = require('../dispatcher/AppDispatcher'),
 	EventEmitter = require('events'),
 	assign = require('object-assign'),
-	FeatureConstants = require('constants/Feature'),
-	FeatureModel = require('models/Feature');
+	FeatureConstants = require('constants/Feature');
+	// FeatureModel = require('models/Feature');
 
 const CHANGE_EVENT = 'change';
 
 var features = [
-		{id: 1, name: 'Nova DefaultFrame (Filtros)', enabled: true}, 
-		{id: 2, name: 'Alterações da Home dos Portais', enabled: false}, 
-		{id: 3, name: 'Nova DefaultFrame (Grid)', enabled: false}
-	];
+	{id: 1, name: 'Nova DefaultFrame (Filtros)', enabled: true}, 
+	{id: 2, name: 'Alterações da Home dos Portais', enabled: false}, 
+	{id: 3, name: 'Nova DefaultFrame (Grid)', enabled: false}
+];
 
 function toggleEnable(featureId, enabled) {
-
-	// Implementar lógica backbone
+	// TODO: Implementar lógica backbone
 	for (var i = 0, len = features.length; i < len; i++)
 		if (features[i].id == featureId)
 			return features[i].enabled = enabled;
 }
 
 function getFeatures() {
-	// Implementar lógica backbone
+	// TODO: Implementar lógica backbone
 	return features;
+}
+
+function createFeature(feature) {
+	// TODO: Implementar lógica backbone
+	features.push(feature);
 }
 
 const Feature = assign({}, EventEmitter.prototype, {
@@ -52,6 +56,11 @@ AppDispatcher.register(function(action) {
 			Feature.emitChange();
 			break;
 			
+		case FeatureConstants.CREATE:
+			createFeature(action.feature);
+			Feature.emitChange();
+			break;
+
 		default:
 	}
 });

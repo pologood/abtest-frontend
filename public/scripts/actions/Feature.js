@@ -9,6 +9,18 @@ class Feature {
 			enabled: enabled
 		});
 	}
+	create (name, description, domainList, groupList, userList) {
+		AppDispatcher.dispatch({
+			actionType: FeatureConstants.CREATE,
+			feature: {
+				name: name,
+				description: description,
+				domainList: domainList,
+				groupList: groupList,
+				userList: userList
+			}
+		});
+	}
 }
 
 module.exports = new Feature();
