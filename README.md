@@ -3,13 +3,12 @@
 [![Circle CI](https://circleci.com/gh/softexpertsa/abtest-frontend.svg?style=svg)](https://circleci.com/gh/softexpertsa/abtest-frontend)
 [![devDependency Status](https://img.shields.io/david/dev/softexpertsa/abtest-frontend.svg?style=flat)](https://david-dm.org/softexpertsa/abtest-frontend#info=devDependencies)
 
-Front-end para o projeto de TesteAB da Softexpert, tendo como backend o [projeto "abtest"]( https://github.com/softexpertsa/abtest).
-
 ## Comandos para iniciar o servidor
+OBS: Em Linux e Mac é possível que o ocorra algum erro ao executar o comando npm install, se ocorrer, tente digitar o comando como "sudo npm install" (sem aspas).
 
 ```js
 npm install
 bower install
-gulp
-node simpletestserver.js
+npm build
+npm start
 ```
