@@ -2,7 +2,6 @@ const AppDispatcher = require('../dispatcher/AppDispatcher'),
 	EventEmitter = require('events'),
 	assign = require('object-assign'),
 	FeatureConstants = require('constants/Feature');
-	// FeatureModel = require('models/Feature');
 
 const CHANGE_EVENT = 'change';
 
