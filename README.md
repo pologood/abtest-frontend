@@ -4,7 +4,6 @@
 [![devDependency Status](https://img.shields.io/david/dev/softexpertsa/abtest-frontend.svg?style=flat)](https://david-dm.org/softexpertsa/abtest-frontend#info=devDependencies)
 
 ## Dependências globais
-OBS: Em Linux e Mac é possível que o ocorra algum erro ao executar o comando npm install, se ocorrer, tente digitar o comando como "sudo npm install" (sem aspas).
 
 ## Comandos para iniciar o servidor
 OBS: Em Linux e Mac é possível que o ocorra algum erro ao executar o comando npm install, se ocorrer, tente digitar o comando como "sudo npm install" (sem aspas).
