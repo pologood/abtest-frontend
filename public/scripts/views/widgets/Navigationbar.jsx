@@ -23,7 +23,7 @@ class Navigationbar extends React.Component {
 					</Navbar.Brand>
 				</Navbar.Header>
 				<Nav>
-					<NavItem eventKey={1} href="#">Features</NavItem>
+					<NavItem eventKey={1} href="#/features">Features</NavItem>
 				</Nav>
 			</Navbar>
 		);
