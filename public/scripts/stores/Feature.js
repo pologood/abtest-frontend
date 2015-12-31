@@ -1,7 +1,8 @@
 const AppDispatcher = require('../dispatcher/AppDispatcher'),
 	EventEmitter = require('events'),
 	assign = require('object-assign'),
-	FeatureConstants = require('constants/Feature');
+	FeatureConstants = require('constants/Feature'),
+	FeatureModel = require('models/Feature');
 
 const CHANGE_EVENT = 'change';
 
@@ -11,15 +12,23 @@ var features = [
 	{id: 3, name: 'Nova DefaultFrame (Grid)', enabled: false}
 ];
 
-function toggleEnable(featureId, enabled) {
-	// TODO: Implementar lógica backbone
+function enable(featureId, enabled) {
+	FeatureModel.enable();
+	
+	/*
 	for (var i = 0, len = features.length; i < len; i++)
 		if (features[i].id == featureId)
 			return features[i].enabled = enabled;
+	*/			
 }
 
-function getFeatures() {
-	// TODO: Implementar lógica backbone
+function disable(featureId, enabled) {
+	FeatureModel.disable();
+}
+
+function getFeatures(param) {
+	FeatureModel.getFeatures(param)
+
 	return features;
 }
 
