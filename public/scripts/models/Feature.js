@@ -1,5 +1,7 @@
+const app = require("app");
+
 var Feature = Backbone.Model.extend({
-	urlRoot: '/features',
+	urlRoot: app.backendUrl + '/features',
 	idAttribute: '_id',
 
 	getFeatures : function(){
