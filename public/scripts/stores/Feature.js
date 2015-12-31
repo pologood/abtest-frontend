@@ -7,29 +7,27 @@ const AppDispatcher = require('../dispatcher/AppDispatcher'),
 const CHANGE_EVENT = 'change';
 
 var features = [
-	{id: 1, name: 'Nova DefaultFrame (Filtros)', enabled: true}, 
-	{id: 2, name: 'Alterações da Home dos Portais', enabled: false}, 
+	{id: 1, name: 'Nova DefaultFrame (Filtros)', enabled: true},
+	{id: 2, name: 'Alterações da Home dos Portais', enabled: false},
 	{id: 3, name: 'Nova DefaultFrame (Grid)', enabled: false}
 ];
 
 function enable(featureId, enabled) {
 	FeatureModel.enable();
-	
+
 	/*
 	for (var i = 0, len = features.length; i < len; i++)
 		if (features[i].id == featureId)
 			return features[i].enabled = enabled;
-	*/			
+	*/
 }
 
 function disable(featureId, enabled) {
 	FeatureModel.disable();
 }
 
-function getFeatures(param) {
-	FeatureModel.getFeatures(param)
-
-	return features;
+function getFeatures() {
+  return FeatureModel.getFeatures();
 }
 
 function createFeature(feature) {
@@ -63,7 +61,7 @@ AppDispatcher.register(function(action) {
 			toggleEnable(action.featureId, action.enabled);
 			Feature.emitChange();
 			break;
-			
+
 		case FeatureConstants.CREATE:
 			createFeature(action.feature);
 			Feature.emitChange();

@@ -5,7 +5,7 @@ var Feature = Backbone.Model.extend({
 	idAttribute: '_id',
 
 	getFeatures : function(){
-		return this.fetch();
+		return Backbone.sync("fetch", this);
 	},
 
 	disable : function() {
@@ -22,4 +22,4 @@ var Feature = Backbone.Model.extend({
 
 });
 
-module.exports = Feature;
+module.exports = new Feature();
