@@ -24,9 +24,8 @@ class Features extends React.Component {
 	}
 
 	render() {
-		const ListPage = require('views/generics/ListPage'),
-			PageHeader = rb.PageHeader,
-			ListGroup = ListGroup,
+		const PageHeader = rb.PageHeader,
+			ListGroup = rb.ListGroup,
 			listItems = require('./widgets/ListItems');
 
 		return (
