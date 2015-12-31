@@ -5,19 +5,11 @@ var Feature = Backbone.Model.extend({
 	idAttribute: '_id',
 
 	getFeatures : function(){
-		return Backbone.sync("fetch", this);
+		return Backbone.sync("fetch", this, {async: false}).responseJSON;
 	},
 
-	disable : function() {
+	enabling : function() {
 		this.toggleStatus(false);
-	},
-
-	enable : function() {
-		this.toggleStatus(true);
-	},
-
-	toggleStatus : function(status) {
-		this.save({enabled: status});
 	}
 
 });

@@ -12,22 +12,13 @@ var features = [
 	{id: 3, name: 'Nova DefaultFrame (Grid)', enabled: false}
 ];
 
-function enable(featureId, enabled) {
-	FeatureModel.enable();
+function enabling(featureId, enabled) {
+	// FeatureModel.enable();
 
-	/*
 	for (var i = 0, len = features.length; i < len; i++)
 		if (features[i].id == featureId)
 			return features[i].enabled = enabled;
-	*/
-}
 
-function disable(featureId, enabled) {
-	FeatureModel.disable();
-}
-
-function getFeatures() {
-  return FeatureModel.getFeatures();
 }
 
 function createFeature(feature) {
@@ -38,7 +29,7 @@ function createFeature(feature) {
 const Feature = assign({}, EventEmitter.prototype, {
 
 	getFeatures: function() {
-		return getFeatures();
+    return FeatureModel.getFeatures();
 	},
 
 	emitChange: function() {
@@ -57,8 +48,8 @@ const Feature = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action) {
 
 	switch(action.actionType) {
-		case FeatureConstants.TOGGLE_ENABLE:
-			toggleEnable(action.featureId, action.enabled);
+		case FeatureConstants.ENABLING:
+			enabling(action.featureId, action.enabled);
 			Feature.emitChange();
 			break;
 
