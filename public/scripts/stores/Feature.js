@@ -7,29 +7,18 @@ const AppDispatcher = require('../dispatcher/AppDispatcher'),
 
 const CHANGE_EVENT = 'change';
 
-var features = [
-	{id: 1, name: 'Nova DefaultFrame (Filtros)', enabled: true},
-	{id: 2, name: 'Alterações da Home dos Portais', enabled: false},
-	{id: 3, name: 'Nova DefaultFrame (Grid)', enabled: false}
-];
-
 function enabling(featureId, enabled) {
-	// FeatureModel.enable();
-
-	for (var i = 0, len = features.length; i < len; i++)
-		if (features[i].id == featureId)
-			return features[i].enabled = enabled;
-
+	// TO-DO: Implementar lógica
 }
 
 function createFeature(feature) {
-	FeatureModel.save();
+	FeatureModel.save(feature);
 }
 
 const Feature = assign({}, EventEmitter.prototype, {
 
 	getFeatures: function() {
-    return FeatureCollection.getFeatures();
+	    return FeatureCollection.getFeatures();
 	},
 
 	emitChange: function() {

@@ -13,16 +13,21 @@ class Create extends React.Component {
 	render() {
 		const PageHeader = rb.PageHeader,
 			Input = rb.Input,
+			ButtonGroup = rb.ButtonGroup,
 			Button = rb.Button;
 
 		return (
 			<div className="container">
 				<PageHeader>
-					Criar Feature
-					<Button className="pull-right"
-							bsSize="xs"
-							bsStyle="primary"
-							onClick={this._createFeature.bind(this)}>Salvar</Button>
+					Cadastrar Feature
+					<ButtonGroup className="pull-right">
+						<Button bsSize="xs"
+								bsStyle="primary"
+								onClick={this._openListPage.bind(this)}>Voltar</Button>
+						<Button bsSize="xs"
+								bsStyle="primary"
+								onClick={this._createFeature.bind(this)}>Salvar</Button>
+					</ButtonGroup>
 				</PageHeader>
 				<form>
 					<Input type="text" label="Nome da feature" ref="name" 
@@ -35,6 +40,10 @@ class Create extends React.Component {
 				</form>
 			</div>
 		);
+	}
+
+	_openListPage() {
+		window.location.href = "#/features";
 	}
 
 	_onNameChange(event) {
