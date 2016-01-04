@@ -13,7 +13,8 @@ class Create extends React.Component {
 	render() {
 		const PageHeader = rb.PageHeader,
 			Input = rb.Input,
-			Button = rb.Button;
+			Button = rb.Button,
+			Jumbotron = rb.Jumbotron;
 
 		return (
 			<div className="container">
@@ -29,7 +30,15 @@ class Create extends React.Component {
 							placeholder="Nova incrível feature" onChange={this._onNameChange.bind(this)}/>
 					<Input type="textarea" label="Descrição" ref="description" onChange={this._onDescriptionChange.bind(this)}
 							placeholder="Descrição da nova incrível feature" />
-
+					<label>Variantes  </label>
+					<Button bsStyle="success"
+							bsSize="xs"
+							className="pull-right"
+							onClick={this._createFeature.bind(this)}>+</Button>
+					<Jumbotron>
+							  
+					</Jumbotron> 
+					
 					<Button bsStyle="primary"
 							onClick={this._createFeature.bind(this)}>Salvar</Button>
 				</form>

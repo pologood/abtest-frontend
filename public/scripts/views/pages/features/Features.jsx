@@ -28,7 +28,7 @@ class Features extends React.Component {
 		const PageHeader = rb.PageHeader,
 			ListGroup = rb.ListGroup,
 			Button = rb.Button,
-			listItems = require('./widgets/ListItems');
+			ListItems = require('./widgets/ListItems');
 
 		return (
 			<div className="container">
