@@ -1,4 +1,4 @@
 module.exports = {
-	ENABLING: null,
-	CREATE: null
+	ENABLING: "ENABLING",
+	CREATE: "CREATE"
 };
