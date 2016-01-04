@@ -14,8 +14,6 @@ class Features extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = getFeaturesState();
-				FeatureActions.create("teste", "description");
-
 	}
 
 	componentDidMount() {
