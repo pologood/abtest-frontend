@@ -1,16 +1,24 @@
-const Backbone = require('backbone'),
-	reactRenderer = require("./reactRenderer"),
-	routes = require("./routes");
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-var Router = Backbone.Router.extend({
-	renderPage: function (component) {
-		reactRenderer(component);
-	}
-});
+var ReactRouter = require('react-router');
+var Router  = ReactRouter.Router;
+var Route = ReactRouter.Route;
+var Navigation = ReactRouter.Navigation;
+//var createBrowserHistory = require('history/lib/createBrowserHistory');
 
-Router.prototype.routes = routes(Router.prototype.renderPage);
+var compontentsRoute = './scripts/views/pages/';
+var Features = require("scripts/views/pages/features/Features.js")
+//var FeaturesCreate = require("scripts/views/pages/features/Create.jsx")
 
-var router = new Router();
-Backbone.history.start();
+// <Route path="*" component={NotFound}/>
 
-module.exports = router;
+var routes = (
+  <Router>
+    <Route path="/" component={Features}/>
+    <Route path="/features" component={Features}/>
+    <Route path="/features/create" component={FeaturesCreate}/>
+  </Router>
+)
+
+module.exports = routes;

@@ -8,4 +8,4 @@ import backbone from 'backbone';
 import underscore from 'underscore';
 import jQuery from 'jquery';
 
-import App from '../app.js';
+import App from '../app.jsx';
