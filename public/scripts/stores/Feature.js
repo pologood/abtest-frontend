@@ -23,8 +23,7 @@ function enabling(featureId, enabled) {
 }
 
 function createFeature(feature) {
-	// TODO: Implementar lógica backbone
-	features.push(feature);
+	FeatureModel.save();
 }
 
 const Feature = assign({}, EventEmitter.prototype, {
