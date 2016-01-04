@@ -1,3 +1,5 @@
+var Feature = require("./FeatureModel");
+
 var Features = Backbone.Collection.extend({
 	model: Feature,
 	url: '/features',
