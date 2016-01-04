@@ -26,13 +26,13 @@ class Features extends React.Component {
 	render() {
 		const PageHeader = rb.PageHeader,
 			ListGroup = rb.ListGroup,
-			listItems = require('./widgets/ListItems');
+			ListItems = require('./widgets/ListItems');
 
 		return (
-			<div>
+			<div className="container">
 				<PageHeader>Features</PageHeader>
 				<ListGroup>
-					<listItems features={this.state.features}/>
+					<ListItems features={this.state.features}/>
 				</ListGroup>
 			</div>
 		);
