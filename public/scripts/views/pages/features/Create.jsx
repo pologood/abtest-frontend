@@ -25,7 +25,7 @@ class Create extends React.Component {
 								bsStyle="primary"
 								onClick={this._openListPage.bind(this)}>Voltar</Button>
 						<Button bsSize="xs"
-								bsStyle="primary"
+								bsStyle="info"
 								onClick={this._createFeature.bind(this)}>Salvar</Button>
 					</ButtonGroup>
 				</PageHeader>
