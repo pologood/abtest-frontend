@@ -1,5 +1,5 @@
 const React = require('react'),
-	FeatureStore = require("features/FeatureCollection"),
+	FeatureStore = require("stores/Feature"),
 	rb = require('react-bootstrap');
 
 function getFeaturesState() {

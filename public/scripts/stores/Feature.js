@@ -2,8 +2,8 @@ const AppDispatcher = require('../dispatcher/AppDispatcher'),
 	EventEmitter = require('events'),
 	assign = require('object-assign'),
 	FeatureConstants = require('constants/Feature'),
-	FeatureModel = require('features/FeatureModel'),
-	FeatureCollection = require('features/FeatureCollection');
+	FeatureModel = require('models/features/FeatureModel'),
+	FeatureCollection = require('models/features/FeatureCollection');
 
 const CHANGE_EVENT = 'change';
 
@@ -30,7 +30,7 @@ function createFeature(feature) {
 const Feature = assign({}, EventEmitter.prototype, {
 
 	getFeatures: function() {
-    return FeatureModel.getFeatures();
+    return FeatureCollection.getFeatures();
 	},
 
 	emitChange: function() {

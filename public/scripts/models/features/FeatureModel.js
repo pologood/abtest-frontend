@@ -1,7 +1,7 @@
 const app = require("app");
 
 var Feature = Backbone.Model.extend({
-	urlRoot: app.backendUrl + '/features',
+	url: app.backendUrl + '/features',
 	idAttribute: '_id',
 
 	enabling : function(status) {
