@@ -33,7 +33,7 @@ class Features extends React.Component {
 			listItems = require('./widgets/ListItems');
 
 		return (
-			<div>
+			<div className="container">
 				<PageHeader>
 					Features
 					<Button className="pull-right"
@@ -42,7 +42,7 @@ class Features extends React.Component {
 							onClick={this._openCreationPage.bind(this)}>Criar feature</Button>
 				</PageHeader>
 				<ListGroup>
-					<listItems features={this.state.features}/>
+					<ListItems features={this.state.features}/>
 				</ListGroup>
 			</div>
 		);

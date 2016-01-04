@@ -5,7 +5,8 @@ Index.render();
 
 class App {
 	constructor() {
-		this.router = Router;
+		this.router = Router,
+    this.backendUrl = "http://localhost:8080/api/v1/"
 	}
 }
 

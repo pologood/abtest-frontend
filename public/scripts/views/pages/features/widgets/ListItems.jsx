@@ -8,7 +8,7 @@ class ListItem extends React.Component {
 		super(props);
 		this.state = {features: this.props.features};
 	}
-	
+
 	render() {
 		const ListGroupItem = rb.ListGroupItem,
 			ButtonGroup = rb.ButtonGroup,
@@ -35,7 +35,11 @@ class ListItem extends React.Component {
 			);
 		}
 
-		return {listItems};
+		return (
+      <div>
+        {listItems}
+      </div>
+    );
 	}
 
 	toggleEnable(item) {
