@@ -1,5 +1,5 @@
 var reactRenderer = function(component) {
-	System.import("views/pages/" + component)
+	require("./scripts/views/pages/" + component)
 			.then(renderComponent);
 };
 

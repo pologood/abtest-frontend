@@ -1,6 +1,6 @@
 const React = require('react'),
 	rb = require('react-bootstrap'),
-	FeatureActions = require('actions/Feature');
+	FeatureActions = require('./scripts/actions/Feature');
 
 class ListItem extends React.Component {
 

@@ -8,7 +8,7 @@ class Header extends React.Component {
 	}
 
 	render() {
-		const Navigationbar = require('./../widgets/Navigationbar');
+		const Navigationbar = require('./../widgets/Navigationbar.jsx');
 
 		return <Navigationbar/>;
 	}

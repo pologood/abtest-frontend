@@ -1,6 +1,6 @@
 const Backbone = require('backbone'),
-	reactRenderer = require("config/routes/reactRenderer"),
-	routes = require("config/routes/routes");
+	reactRenderer = require("./reactRenderer"),
+	routes = require("./routes");
 
 var Router = Backbone.Router.extend({
 	renderPage: function (component) {

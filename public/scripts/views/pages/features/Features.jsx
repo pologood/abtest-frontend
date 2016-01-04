@@ -1,5 +1,5 @@
 const React = require('react'),
-	FeatureStore = require("stores/Feature"),
+	FeatureStore = require("./scripts/stores/Feature"),
 	rb = require('react-bootstrap');
 
 function getFeaturesState() {
@@ -26,7 +26,7 @@ class Features extends React.Component {
 	render() {
 		const PageHeader = rb.PageHeader,
 			ListGroup = rb.ListGroup,
-			listItems = require('./widgets/ListItems');
+			listItems = require('./widgets/ListItems.jsx');
 
 		return (
 			<div>

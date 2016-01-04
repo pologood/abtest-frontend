@@ -1,5 +1,5 @@
-const Index = require("views/Index.js"),
-	Router = require("config/routes/Router");
+import Index from "./views/Index.jsx";
+import Router from "./config/routes/Router";
 
 Index.render();
 

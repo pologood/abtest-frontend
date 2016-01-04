@@ -5,7 +5,7 @@ var Index = function () {
 		render: function() {
 			var React = require('react');
 			var ReactDOM = require('react-dom');
-			var Header = require('./partials/Header');
+			var Header = require('./partials/Header.jsx');
 
 			var container = document.getElementById('header');
 
