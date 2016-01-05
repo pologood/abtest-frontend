@@ -12,7 +12,7 @@ function enabling(featureId, enabled) {
 }
 
 function createExperience(experience) {
-	ExperienceModel.save(feature);
+	ExperienceModel.save(experience);
 }
 
 const Experience = assign({}, EventEmitter.prototype, {

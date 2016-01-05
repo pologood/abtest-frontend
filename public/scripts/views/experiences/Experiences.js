@@ -37,7 +37,7 @@ class Experiences extends React.Component {
 					<Button className="pull-right"
 							bsSize="xs"
 							bsStyle="primary"
-							onClick={this._openCreationPage.bind(this)}>Cadastrar feature</Button>
+							onClick={this._openCreationPage.bind(this)}>Cadastrar experimento</Button>
 				</PageHeader>
 				<ListGroup>
 					<ListItems experiences={this.state.experiences}/>
