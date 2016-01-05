@@ -10,27 +10,29 @@ class Create extends React.Component {
 	}
 
 	render() {
+		const Variations = require('./widgets/Variations');
+
 		return (
 			<div className="container">
 				<div className="page-header">
-					<h1>Criar Feature</h1>
+					<h4><b>Cadastro de Experimento</b></h4>
 				</div>
 
 				<form>
-					<div className="form-group">
-						<label>Nome da feature</label>
+					<div className="form-group retreat-left">
+						<spam>Título</spam>
 						<input className="form-control" type="text" ref="name" 
-							placeholder="Nova incrível feature" onChange={this._onNameChange.bind(this)} />
+							onChange={this._onNameChange.bind(this)} />
 					</div>
 
-					<div className="form-group">
-						<label>Descrição</label>
-						<textarea className="form-control" ref="description" placeholder="Descrição da nova incrível feature" 
-							onChange={this._onNameChange.bind(this)}></textarea>
+					<div className="form-group retreat-left">
+						<spam>Descrição</spam>
+						<textarea rows="8" cols="50" className="form-control txtarea-variation" ref="description" onChange={this._onNameChange.bind(this)}
+							></textarea>
 					</div>
-
-					<button className="btn btn-primary btn-s pull-right"
-						onClick={this._createFeature.bind(this)}>Salvar</button>
+					<Variations/>
+					<button className="btn btn-primary btn-sm"
+						onClick={this._createFeature.bind(this)}>SALVAR</button>
 				</form>
 			</div>
 		);
