@@ -1,6 +1,6 @@
 import React from 'react';
-import FeatureActions from "../../actions/Feature";
-import FeatureStore from "../../stores/Feature";
+import ExperienceActions from "../../actions/Experience";
+import ExperienceStore from "../../stores/Experience";
 class Create extends React.Component {
 
 	constructor(props) {
@@ -9,7 +9,7 @@ class Create extends React.Component {
 	}
 
 	render() {
-		const Variations = require('./FeatureVariations');
+		const Variations = require('./ExperienceVariations');
 
 		return (
 			<div className="container">
@@ -31,14 +31,14 @@ class Create extends React.Component {
 					</div>
 					<Variations/>
 					<button className="btn btn-primary btn-sm"
-						onClick={this._createFeature.bind(this)}>SALVAR</button>
+						onClick={this._createExperience.bind(this)}>SALVAR</button>
 				</form>
 			</div>
 		);
 	}
 
 	_openListPage() {
-		window.location.hash = "/features";
+		window.location.hash = "/experiences";
 	}
 
 	_onNameChange(event) {
@@ -49,14 +49,14 @@ class Create extends React.Component {
 		this.state.description = event.target.value;
 	}
 
-	_createFeature() {
+	_createExperience() {
 		var name = this.state.name,
 			description = this.state.description,
 			domainList = null,
 			groupList = null,
 			userList = null;
 
-		FeatureActions.create(name, description, domainList, groupList, userList);
+		ExperienceActions.create(name, description, domainList, groupList, userList);
 	}
 }
 

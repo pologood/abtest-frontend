@@ -1,11 +1,11 @@
 import React from 'react';
-import FeatureActions from '../../actions/Feature';
+import ExperienceActions from '../../actions/Experience';
 
 class ListItem extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {features: this.props.features};
+		this.state = {experiences: this.props.experiences};
 	}
 
 	render() {
@@ -15,7 +15,7 @@ class ListItem extends React.Component {
 			Button = rb.Button;
 
 		var listItems = [],
-			stateItems = this.state.features,
+			stateItems = this.state.experiences,
 			item = null;
 
 		if (stateItems) {

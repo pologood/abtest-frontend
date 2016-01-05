@@ -1,18 +1,18 @@
 const AppDispatcher = require('../config/AppDispatcher'),
-	FeatureConstants = require('../constants/Feature');
+	ExperienceConstants = require('../constants/Experience');
 
-class Feature {
-	toggleEnable (featureId, enabled) {
+class Experience {
+	toggleEnable (experienceId, enabled) {
 		AppDispatcher.dispatch({
-			actionType: FeatureConstants.ENABLING,
-			featureId: featureId,
+			actionType: ExperienceConstants.ENABLING,
+			experienceId: experienceId,
 			enabled: enabled
 		});
 	}
 	create (name, description, domainList, groupList, userList) {
 		AppDispatcher.dispatch({
-			actionType: FeatureConstants.CREATE,
-			feature: {
+			actionType: ExperienceConstants.CREATE,
+			experience: {
 				name: name,
 				description: description,
 				domainList: domainList,
@@ -23,4 +23,4 @@ class Feature {
 	}
 }
 
-module.exports = new Feature();
+module.exports = new Experience();
