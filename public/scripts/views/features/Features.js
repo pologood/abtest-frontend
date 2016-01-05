@@ -1,6 +1,6 @@
-const React = require('react'),
-	FeatureStore = require("../../stores/Feature"),
-	rb = require('react-bootstrap');
+import React from 'react';
+import FeatureStore from "../../stores/Feature";
+import FeatureActions from '../../actions/Feature';
 
 function getFeaturesState() {
 	return {
@@ -16,26 +16,38 @@ class Features extends React.Component {
 	}
 
 	componentDidMount() {
-		FeatureStore.addChangeListener(this._onChange.bind(this));
+		FeatureStore.addChangeListener(this._onChange);
 	}
 
 	componentWillUnmount() {
-		FeatureStore.removeChangeListener(this._onChange.bind(this));
+		FeatureStore.removeChangeListener(this._onChange);
 	}
 
 	render() {
-		const PageHeader = rb.PageHeader,
+		const rb = require('react-bootstrap'),
+			ListItems = require('./FeatureItems.js'),
+			PageHeader = rb.PageHeader,
 			ListGroup = rb.ListGroup,
-			listItems = require('./FeatureItems.js');
+			Button = rb.Button;
 
 		return (
-			<div>
-				<PageHeader>Features</PageHeader>
+			<div className="container">
+				<PageHeader>
+					Features
+					<Button className="pull-right"
+							bsSize="xs"
+							bsStyle="primary"
+							onClick={this._openCreationPage.bind(this)}>Cadastrar feature</Button>
+				</PageHeader>
 				<ListGroup>
-					<listItems features={this.state.features}/>
+					<ListItems features={this.state.features}/>
 				</ListGroup>
 			</div>
 		);
+	}
+
+	_openCreationPage() {
+		window.location.hash = "/features/create";
 	}
 
 	_onChange() {

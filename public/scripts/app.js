@@ -1,15 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Index from "./views/Index.js";
-import Router from "./config/Router";
-
-Index.render();
-
-var container = document.getElementById('page');
-ReactDOM.render(<Router />, container);	
-
 class App {
-	constructor() {}
+
+	constructor() {
+	    this.backendUrl = "http://192.168.1.219:8080/api/v1";
+	}
 }
 
 module.exports = new App();

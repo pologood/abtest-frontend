@@ -1,6 +1,5 @@
-const React = require('react'),
-	ReactDOM = require('react-dom'),
-	rb = require('react-bootstrap');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Header extends React.Component {
 
@@ -9,7 +8,8 @@ class Header extends React.Component {
 	}
 
 	render() {
-		const Navbar = rb.Navbar,
+		const rb = require('react-bootstrap'),
+			Navbar = rb.Navbar,
 			Nav = rb.Nav,
 			NavItem = rb.NavItem;
 

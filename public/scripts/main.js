@@ -8,4 +8,12 @@ import backbone from 'backbone';
 import underscore from 'underscore';
 import jQuery from 'jquery';
 
-import App from './app.js';
+import app from './app.js';
+import Index from "./views/Index.js";
+import Router from "./config/Router";
+
+Index.render();
+
+var container = document.getElementById('page');
+ReactDOM.render(<Router />, container);	
+

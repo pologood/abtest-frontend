@@ -1,4 +1,4 @@
 module.exports = {
-	TOGGLE_ENABLE: null,
-	CREATE: null
+	ENABLING: "ENABLING",
+	CREATE: "CREATE"
 };

@@ -4,7 +4,7 @@ const AppDispatcher = require('../config/AppDispatcher'),
 class Feature {
 	toggleEnable (featureId, enabled) {
 		AppDispatcher.dispatch({
-			actionType: FeatureConstants.TOGGLE_ENABLE,
+			actionType: FeatureConstants.ENABLING,
 			featureId: featureId,
 			enabled: enabled
 		});
