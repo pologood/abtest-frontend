@@ -1,7 +1,6 @@
 const React = require('react'),
 	FeatureActions = require("actions/Feature"),
-	FeatureStore = require("stores/Feature"),
-	rb = require('react-bootstrap');
+	FeatureStore = require("stores/Feature");
 
 class Create extends React.Component {
 
@@ -11,32 +10,27 @@ class Create extends React.Component {
 	}
 
 	render() {
-		const PageHeader = rb.PageHeader,
-			Input = rb.Input,
-			ButtonGroup = rb.ButtonGroup,
-			Button = rb.Button;
-
 		return (
 			<div className="container">
-				<PageHeader>
-					Cadastrar Feature
-					<ButtonGroup className="pull-right">
-						<Button bsSize="xs"
-								bsStyle="primary"
-								onClick={this._openListPage.bind(this)}>Voltar</Button>
-						<Button bsSize="xs"
-								bsStyle="info"
-								onClick={this._createFeature.bind(this)}>Salvar</Button>
-					</ButtonGroup>
-				</PageHeader>
-				<form>
-					<Input type="text" label="Nome da feature" ref="name" 
-							placeholder="Nova incrível feature" onChange={this._onNameChange.bind(this)}/>
-					<Input type="textarea" label="Descrição" ref="description" onChange={this._onDescriptionChange.bind(this)}
-							placeholder="Descrição da nova incrível feature" />
+				<div className="page-header">
+					<h1>Criar Feature</h1>
+				</div>
 
-					<Button bsStyle="primary"
-							onClick={this._createFeature.bind(this)}>Salvar</Button>
+				<form>
+					<div className="form-group">
+						<label>Nome da feature</label>
+						<input className="form-control" type="text" ref="name" 
+							placeholder="Nova incrível feature" onChange={this._onNameChange.bind(this)} />
+					</div>
+
+					<div className="form-group">
+						<label>Descrição</label>
+						<textarea className="form-control" ref="description" placeholder="Descrição da nova incrível feature" 
+							onChange={this._onNameChange.bind(this)}></textarea>
+					</div>
+
+					<button className="btn btn-primary btn-s pull-right"
+						onClick={this._createFeature.bind(this)}>Salvar</button>
 				</form>
 			</div>
 		);
