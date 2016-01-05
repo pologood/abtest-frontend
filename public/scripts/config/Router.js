@@ -3,16 +3,10 @@ import ReactDOM  from 'react-dom';
 import { Router, Route } from 'react-router';
 import { createHistory } from 'history';
 
-//var createBrowserHistory = require('history/lib/createBrowserHistory');
-
-var compontentsRoute = './scripts/views/pages/';
-import Features from "../views/pages/features/Features";
-//var FeaturesCreate = require("scripts/views/pages/features/Create.jsx")
-
-// <Route path="*" component={NotFound}/>
-// <Route path="/features/create" component={FeaturesCreate}/>
+import Features from "../views/features/Features";
 
 class Routes extends React.Component {
+
 	constructor(props) {
 		super(props);
 	}
@@ -26,6 +20,5 @@ class Routes extends React.Component {
 		);
 	}
 }
-
 
 module.exports = Routes;
