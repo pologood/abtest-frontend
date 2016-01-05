@@ -37,7 +37,7 @@ class Features extends React.Component {
 					<Button className="pull-right"
 							bsSize="xs"
 							bsStyle="primary"
-							onClick={this._openCreationPage.bind(this)}>Criar feature</Button>
+							onClick={this._openCreationPage.bind(this)}>Cadastrar feature</Button>
 				</PageHeader>
 				<ListGroup>
 					<ListItems features={this.state.features}/>

@@ -10,12 +10,12 @@ class Create extends React.Component {
 	}
 
 	render() {
-
 		return (
 			<div className="container">
 				<div className="page-header">
 					<h1>Criar Feature</h1>
 				</div>
+
 				<form>
 					<div className="form-group">
 						<label>Nome da feature</label>
@@ -34,6 +34,10 @@ class Create extends React.Component {
 				</form>
 			</div>
 		);
+	}
+
+	_openListPage() {
+		window.location.href = "#/features";
 	}
 
 	_onNameChange(event) {
