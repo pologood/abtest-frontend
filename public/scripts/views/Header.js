@@ -1,19 +1,17 @@
-const React = require('react'),
-	ReactDOM = require('react-dom'),
-	rb = require('react-bootstrap');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-class Navigationbar extends React.Component {
+class Header extends React.Component {
 
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
-		const Navbar = rb.Navbar,
+		const rb = require('react-bootstrap'),
+			Navbar = rb.Navbar,
 			Nav = rb.Nav,
-			NavItem = rb.NavItem,
-			NavDropdown = rb.NavDropdown,
-			MenuItem = rb.MenuItem;
+			NavItem = rb.NavItem;
 
 		return (
 			<Navbar>
@@ -27,7 +25,8 @@ class Navigationbar extends React.Component {
 				</Nav>
 			</Navbar>
 		);
+		return <Navigationbar/>;
 	}
 }
 
-module.exports = Navigationbar;
+module.exports = Header;

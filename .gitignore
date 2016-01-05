@@ -1,7 +1,6 @@
-bower_components
-public/dist
+public/build
 node_modules
 spec
 test/jasmine_examples
 lib
-public/vendor
+bin

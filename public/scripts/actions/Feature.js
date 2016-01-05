@@ -1,4 +1,4 @@
-const AppDispatcher = require('../dispatcher/AppDispatcher'),
+const AppDispatcher = require('../config/AppDispatcher'),
 	FeatureConstants = require('../constants/Feature');
 
 class Feature {

@@ -1,7 +1,6 @@
-const React = require('react'),
-	FeatureStore = require("stores/Feature"),
-	rb = require('react-bootstrap'),
-	FeatureActions = require('actions/Feature');
+import React from 'react';
+import FeatureStore from "../../stores/Feature";
+import FeatureActions from '../../actions/Feature';
 
 function getFeaturesState() {
 	return {
@@ -25,10 +24,11 @@ class Features extends React.Component {
 	}
 
 	render() {
-		const PageHeader = rb.PageHeader,
+		const rb = require('react-bootstrap'),
+			ListItems = require('./FeatureItems.js'),
+			PageHeader = rb.PageHeader,
 			ListGroup = rb.ListGroup,
-			Button = rb.Button,
-			ListItems = require('./widgets/ListItems');
+			Button = rb.Button;
 
 		return (
 			<div className="container">
@@ -47,7 +47,7 @@ class Features extends React.Component {
 	}
 
 	_openCreationPage() {
-		window.location.href = "#/features/create";
+		window.location.hash = "/features/create";
 	}
 
 	_onChange() {

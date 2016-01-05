@@ -1,7 +1,6 @@
-const React = require('react'),
-	FeatureActions = require("actions/Feature"),
-	FeatureStore = require("stores/Feature");
-
+import React from 'react';
+import FeatureActions from "../../actions/Feature";
+import FeatureStore from "../../stores/Feature";
 class Create extends React.Component {
 
 	constructor(props) {
@@ -10,7 +9,7 @@ class Create extends React.Component {
 	}
 
 	render() {
-		const Variations = require('./widgets/Variations');
+		const Variations = require('./FeatureVariations');
 
 		return (
 			<div className="container">
@@ -39,7 +38,7 @@ class Create extends React.Component {
 	}
 
 	_openListPage() {
-		window.location.href = "#/features";
+		window.location.hash = "/features";
 	}
 
 	_onNameChange(event) {

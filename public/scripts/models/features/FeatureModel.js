@@ -1,4 +1,5 @@
-const app = require("app");
+import Backbone from 'backbone';
+import app from "../../app";
 
 var Feature = Backbone.Model.extend({
 	url: app.backendUrl + '/features',

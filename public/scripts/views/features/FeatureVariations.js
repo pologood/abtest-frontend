@@ -1,6 +1,4 @@
-const React = require('react'),
-	FeatureActions = require('actions/Feature'),
-	FeatureStore = require("stores/Feature");
+import React from 'react';
 
 class Variations extends React.Component {
 

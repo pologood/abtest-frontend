@@ -1,12 +1,7 @@
-const Index = require("views/Index.js"),
-	Router = require("config/routes/Router");
-
-Index.render();
-
 class App {
+
 	constructor() {
-		this.router = Router,
-	    this.backendUrl = "http://192.168.1.219:8080/api/v1"
+	    this.backendUrl = "http://192.168.1.219:8080/api/v1";
 	}
 }
 

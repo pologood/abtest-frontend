@@ -1,9 +1,9 @@
-const AppDispatcher = require('../dispatcher/AppDispatcher'),
-	EventEmitter = require('events'),
-	assign = require('object-assign'),
-	FeatureConstants = require('constants/Feature'),
-	FeatureModel = require('models/features/FeatureModel'),
-	FeatureCollection = require('models/features/FeatureCollection');
+import AppDispatcher from '../config/AppDispatcher';
+import EventEmitter from 'events';
+import assign from 'object-assign';
+import FeatureConstants from '../constants/Feature';
+import FeatureModel from '../models/features/FeatureModel';
+import FeatureCollection from '../models/features/FeatureCollection';
 
 const CHANGE_EVENT = 'change';
 

@@ -1,13 +1,18 @@
-var Feature = require("./FeatureModel"),
-	app = require("app");
+import Feature from "./FeatureModel";
+import Backbone from 'backbone';
+import app from "../../app";
 
-var Features = Backbone.Collection.extend({
-	model: Feature,
-	url: app.backendUrl + '/features',
+class Features extends Backbone.Collection {
 
-	getFeatures: function() {
+	constructor() {
+		super();
+		this.model = Feature;
+		this.url = app.backendUrl + '/features';
+	}
+
+	getFeatures() {
 		return Backbone.sync("fetch", this, {async: false}).responseJSON;
 	}
-});
+};
 
 module.exports = new Features();
