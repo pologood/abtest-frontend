@@ -1,7 +1,6 @@
 import React from 'react';
 import FeatureActions from "../../actions/Feature";
 import FeatureStore from "../../stores/Feature";
-
 class Create extends React.Component {
 
 	constructor(props) {
@@ -10,33 +9,29 @@ class Create extends React.Component {
 	}
 
 	render() {
-		const rb = require('react-bootstrap'),
-			PageHeader = rb.PageHeader,
-			Input = rb.Input,
-			ButtonGroup = rb.ButtonGroup,
-			Button = rb.Button;
+		const Variations = require('./FeatureVariations');
 
 		return (
 			<div className="container">
-				<PageHeader>
-					Cadastrar Feature
-					<ButtonGroup className="pull-right">
-						<Button bsSize="xs"
-								bsStyle="primary"
-								onClick={this._openListPage.bind(this)}>Voltar</Button>
-						<Button bsSize="xs"
-								bsStyle="info"
-								onClick={this._createFeature.bind(this)}>Salvar</Button>
-					</ButtonGroup>
-				</PageHeader>
-				<form>
-					<Input type="text" label="Nome da feature" ref="name" 
-							placeholder="Nova incrível feature" onChange={this._onNameChange.bind(this)}/>
-					<Input type="textarea" label="Descrição" ref="description" onChange={this._onDescriptionChange.bind(this)}
-							placeholder="Descrição da nova incrível feature" />
+				<div className="page-header">
+					<h4><b>Cadastro de Experimento</b></h4>
+				</div>
 
-					<Button bsStyle="primary"
-							onClick={this._createFeature.bind(this)}>Salvar</Button>
+				<form>
+					<div className="form-group retreat-left">
+						<spam>Título</spam>
+						<input className="form-control" type="text" ref="name" 
+							onChange={this._onNameChange.bind(this)} />
+					</div>
+
+					<div className="form-group retreat-left">
+						<spam>Descrição</spam>
+						<textarea rows="8" cols="50" className="form-control txtarea-variation" ref="description" onChange={this._onNameChange.bind(this)}
+							></textarea>
+					</div>
+					<Variations/>
+					<button className="btn btn-primary btn-sm"
+						onClick={this._createFeature.bind(this)}>SALVAR</button>
 				</form>
 			</div>
 		);
