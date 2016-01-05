@@ -4,3 +4,4 @@ spec
 test/jasmine_examples
 lib
 bin
+npm-debug.log
