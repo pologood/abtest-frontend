@@ -9,15 +9,16 @@ class Experience {
 			enabled: enabled
 		});
 	}
-	create (name, description, domainList, groupList, userList) {
+	create (name, description, percentage, domains, groups, users) {
 		AppDispatcher.dispatch({
 			actionType: ExperienceConstants.CREATE,
 			experience: {
 				name: name,
 				description: description,
-				domainList: domainList,
-				groupList: groupList,
-				userList: userList
+				percentage: percentage,
+				domains: domains,
+				groups: groups,
+				users: users
 			}
 		});
 	}
