@@ -13,6 +13,9 @@ const babelify = require('babelify'),
 
 var watchify = require('watchify');
 var notify = require('gulp-notify');
+var htmlreplace = require('gulp-html-replace');
+
+var nodeEnv = process.env.NODE_ENV;
 
 const browserSync = require('browser-sync'),
 	reload = browserSync.reload;
@@ -49,16 +52,31 @@ function buildScript(file, watch) {
 
   function rebundle() {
     var stream = bundler.bundle();
+    if(nodeEnv == "prod") {
+			gulp.src('./public/index.html')
+				.pipe(htmlreplace({
+							'js': '/app.min.js'
+						}))
+				.pipe(gulp.dest('./public/build/'));
+      return stream
+          .on('error', handleErrors)
+          .pipe(source(file))
+          .pipe(buffer())
+          .pipe(uglify())
+          .pipe(rename('app.min.js'))
+          .pipe(gulp.dest('./public/build'));
+    }
+
+		gulp.src('./public/index.html')
+				.pipe(htmlreplace({
+							'js': '/main.js'
+						}))
+				.pipe(gulp.dest('./public/build/'));
     return stream
-      .on('error', handleErrors)
-      .pipe(source(file))
-      .pipe(gulp.dest('./public/build/'))
-      // If you also want to uglify it
-      // .pipe(buffer())
-      // .pipe(uglify())
-      // .pipe(rename('app.min.js'))
-      // .pipe(gulp.dest('./public/build'))
-      .pipe(reload({stream:true}))
+        .on('error', handleErrors)
+        .pipe(source(file))
+        .pipe(gulp.dest('./public/build/'))
+        .pipe(reload({stream:true}));
   }
 
   // listen for an update and run rebundle
@@ -121,7 +139,7 @@ gulp.task('serve', function() {
 	
 	browserSync.init({
 		server: {
-			baseDir: paths.SRC
+			baseDir: paths.SRC + '/build'
 		}
 	});
 

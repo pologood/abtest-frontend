@@ -25,6 +25,7 @@
     "browserify": "^12.0.1",
     "gulp": "^3.9.0",
     "gulp-babel": "^6.1.1",
+    "gulp-html-replace": "^1.5.5",
     "gulp-jasmine": "^2.2.1",
     "gulp-notify": "^2.2.0",
     "gulp-rename": "^1.2.2",
@@ -38,9 +39,10 @@
     "watchify": "^3.6.1"
   },
   "scripts": {
-    "start": "./node_modules/gulp/bin/gulp.js serve",
-    "build": "./node_modules/gulp/bin/gulp.js",
-    "test": "./node_modules/gulp/bin/gulp.js test"
+    "start": "NODE_ENV=dev ./node_modules/gulp/bin/gulp.js serve",
+    "build": "NODE_ENV=prod ./node_modules/gulp/bin/gulp.js",
+    "dev-build": "NODE_ENV=dev ./node_modules/gulp/bin/gulp.js",
+    "test": "NODE_ENV=test ./node_modules/gulp/bin/gulp.js test"
   },
   "author": "",
   "license": "ISC"

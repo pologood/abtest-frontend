@@ -8,6 +8,7 @@ OBS: Em Linux e Mac é possível que o ocorra algum erro ao executar o comando n
 
 ```js
 npm install
-npm run build
+npm run build // Para build para produção
+npm run dev-build // Para uso do desenvolvedor
 npm start
 ```
