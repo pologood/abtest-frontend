@@ -1,11 +1,11 @@
 import React from 'react';
-import ExperienceActions from '../../actions/Experience';
+import ExperimentActions from '../../actions/Experiment';
 
 class ListItem extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {experiences: this.props.experiences};
+		this.state = {experiments: this.props.experiments};
 	}
 
 	render() {
@@ -15,7 +15,7 @@ class ListItem extends React.Component {
 			Button = rb.Button;
 
 		var listItems = [],
-			stateItems = this.state.experiences,
+			stateItems = this.state.experiments,
 			item = null;
 
 		if (stateItems) {
@@ -45,7 +45,7 @@ class ListItem extends React.Component {
 	}
 
 	toggleEnable(item) {
-		FeatureActions.toggleEnable(item.id, !item.enabled);
+		ExperimentActions.toggleEnable(item.id, !item.enabled);
 	}
 }
 

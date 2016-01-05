@@ -1,18 +1,18 @@
 const AppDispatcher = require('../config/AppDispatcher'),
-	ExperienceConstants = require('../constants/Experience');
+	ExperimentConstants = require('../constants/Experiment');
 
-class Experience {
-	toggleEnable (experienceId, enabled) {
+class Experiment {
+	toggleEnable (experimentId, enabled) {
 		AppDispatcher.dispatch({
-			actionType: ExperienceConstants.ENABLING,
-			experienceId: experienceId,
+			actionType: ExperimentConstants.ENABLING,
+			experimentId: experimentId,
 			enabled: enabled
 		});
 	}
 	create (name, description, percentage, domains, groups, users) {
 		AppDispatcher.dispatch({
-			actionType: ExperienceConstants.CREATE,
-			experience: {
+			actionType: ExperimentConstants.CREATE,
+			experiment: {
 				name: name,
 				description: description,
 				percentage: percentage,
@@ -24,4 +24,4 @@ class Experience {
 	}
 }
 
-module.exports = new Experience();
+module.exports = new Experiment();

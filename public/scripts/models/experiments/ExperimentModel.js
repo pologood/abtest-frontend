@@ -1,8 +1,8 @@
 import Backbone from 'backbone';
 import app from "../../app";
 
-var Experience = Backbone.Model.extend({
-	url: app.backendUrl + '/experiences',
+var Experiment = Backbone.Model.extend({
+	url: app.backendUrl + '/experiments',
 	idAttribute: '_id',
 
 	enabling : function(status) {
@@ -11,4 +11,4 @@ var Experience = Backbone.Model.extend({
 
 });
 
-module.exports = new Experience();
+module.exports = new Experiment();

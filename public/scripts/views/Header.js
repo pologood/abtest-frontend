@@ -21,7 +21,7 @@ class Header extends React.Component {
 					</Navbar.Brand>
 				</Navbar.Header>
 				<Nav>
-					<NavItem eventKey={1} href="#/experiences">Experiências</NavItem>
+					<NavItem eventKey={1} href="#/experiments">Experimentos</NavItem>
 				</Nav>
 			</Navbar>
 		);

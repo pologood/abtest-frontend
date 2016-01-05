@@ -1,31 +1,31 @@
 import React from 'react';
-import ExperienceStore from "../../stores/Experience";
-import ExperienceActions from '../../actions/Experience';
+import ExperimentStore from "../../stores/Experiment";
+import ExperimentActions from '../../actions/Experiment';
 
-function getExperiencesState() {
+function getExperimentsState() {
 	return {
-		features: ExperienceStore.getExperiences()
+		features: ExperimentStore.getExperiments()
 	};
 }
 
-class Experiences extends React.Component {
+class Experiments extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = getExperiencesState();
+		this.state = getExperimentsState();
 	}
 
 	componentDidMount() {
-		ExperienceStore.addChangeListener(this._onChange);
+		ExperimentStore.addChangeListener(this._onChange);
 	}
 
 	componentWillUnmount() {
-		ExperienceStore.removeChangeListener(this._onChange);
+		ExperimentStore.removeChangeListener(this._onChange);
 	}
 
 	render() {
 		const rb = require('react-bootstrap'),
-			ListItems = require('./ExperienceItems.js'),
+			ListItems = require('./ExperimentItems.js'),
 			PageHeader = rb.PageHeader,
 			ListGroup = rb.ListGroup,
 			Button = rb.Button;
@@ -40,19 +40,19 @@ class Experiences extends React.Component {
 							onClick={this._openCreationPage.bind(this)}>Cadastrar experimento</Button>
 				</PageHeader>
 				<ListGroup>
-					<ListItems experiences={this.state.experiences}/>
+					<ListItems experiments={this.state.experiments}/>
 				</ListGroup>
 			</div>
 		);
 	}
 
 	_openCreationPage() {
-		window.location.hash = "/experiences/create";
+		window.location.hash = "/experiments/create";
 	}
 
 	_onChange() {
-		this.setState(getExperiencesState());
+		this.setState(getExperimentsState());
 	}
 }
 
-module.exports = Experiences;
+module.exports = Experiments;

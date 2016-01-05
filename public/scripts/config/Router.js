@@ -3,8 +3,8 @@ import ReactDOM  from 'react-dom';
 import { Router, Route } from 'react-router';
 import { createHistory } from 'history';
 
-import Experiences from "../views/experiences/Experiences";
-import ExperienceCreate from "../views/experiences/ExperienceCreate";
+import Experiments from "../views/experiments/Experiments";
+import ExperimentCreate from "../views/experiments/ExperimentCreate";
 
 class Routes extends React.Component {
 
@@ -15,9 +15,9 @@ class Routes extends React.Component {
 	render() {
 		return (
 			<Router>
-				<Route path="/" component={Experiences}/>
-				<Route path="/experiences" component={Experiences}/>
-				<Route path="/experiences/create" component={ExperienceCreate}/>
+				<Route path="/" component={Experiments}/>
+				<Route path="/experiments" component={Experiments}/>
+				<Route path="/experiments/create" component={ExperimentCreate}/>
 			</Router>
 		);
 	}
