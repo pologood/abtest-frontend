@@ -29,8 +29,8 @@ class Create extends React.Component {
 							onChange={this._onNameChange.bind(this)}></textarea>
 					</div>
 
-					<button className="btn btn-primary btn-sm pull-right"
-							onClick={this._createFeature.bind(this)}>Salvar</button>
+					<button className="btn btn-primary btn-s pull-right"
+						onClick={this._createFeature.bind(this)}>Salvar</button>
 				</form>
 			</div>
 		);
