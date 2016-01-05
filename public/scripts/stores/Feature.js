@@ -1,4 +1,4 @@
-const AppDispatcher = require('../dispatcher/AppDispatcher'),
+const AppDispatcher = require('../config/AppDispatcher'),
 	EventEmitter = require('events'),
 	assign = require('object-assign'),
 	FeatureConstants = require('../constants/Feature');

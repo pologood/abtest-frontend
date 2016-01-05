@@ -8,7 +8,6 @@ OBS: Em Linux e Mac é possível que o ocorra algum erro ao executar o comando n
 
 ```js
 npm install
-bower install
-npm build
+npm run build
 npm start
 ```
