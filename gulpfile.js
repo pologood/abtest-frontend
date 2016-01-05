@@ -22,7 +22,7 @@ const browserSync = require('browser-sync'),
 
 const paths = {
 	SRC: './public',
-	DIST: './public/dist',
+	DIST: './public/build',
 	TEST: './test'};
 
 paths.SCRIPTS = [paths.SRC + '/scripts/**/*.jsx', paths.SRC + '/scripts/**/*.js'];
@@ -132,7 +132,7 @@ gulp.task('test', function () {
 gulp.task('style', function () {
 	return gulp.src(paths.STYLES)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(paths.DIST + '/styles'));
+		.pipe(gulp.dest(paths.DIST));
 });
 
 gulp.task('serve', function() {
