@@ -1,6 +1,6 @@
 import React from 'react';
-import ExperienceActions from "../../actions/Experience";
-import ExperienceStore from "../../stores/Experience";
+import ExperimentActions from "../../actions/Experiment";
+import ExperimentStore from "../../stores/Experiment";
 class Create extends React.Component {
 
 	constructor(props) {
@@ -9,7 +9,7 @@ class Create extends React.Component {
 	}
 
 	render() {
-		const Variations = require('./ExperienceVariations');
+		const Variations = require('./ExperimentVariations');
 
 		return (
 			<div className="container">
@@ -17,7 +17,7 @@ class Create extends React.Component {
 					<h4><b>Cadastro de Experimento</b></h4>
 				</div>
 
-				<form onSubmit={this._createExperience.bind(this)}>
+				<form onSubmit={this._createExperiment.bind(this)}>
 					<div className="form-group">
 						<label>Título</label>
 						<input className="form-control" type="text" ref="name"/>
@@ -52,10 +52,10 @@ class Create extends React.Component {
 	}
 
 	_openListPage() {
-		window.location.hash = "/experiences";
+		window.location.hash = "/experiments";
 	}
 
-	_createExperience(event) {
+	_createExperiment(event) {
 		event.preventDefault();
 		
 		var name = this.refs.name.value,
@@ -65,7 +65,7 @@ class Create extends React.Component {
 			groupList = null,
 			userList = null;
 
-		ExperienceActions.create(name, description, percentage, domainList, groupList, userList);
+		ExperimentActions.create(name, description, percentage, domainList, groupList, userList);
 	}
 }
 
