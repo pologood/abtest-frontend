@@ -14,7 +14,7 @@ class Create extends React.Component {
 		return (
 			<div className="container">
 				<div className="page-header">
-					<h4><b>Cadastro de Experimento</b></h4>
+					<h3><b>Cadastro de Experimento</b></h3>
 				</div>
 
 				<form onSubmit={this._createExperiment.bind(this)}>
@@ -39,7 +39,7 @@ class Create extends React.Component {
 
 					<div className="form-group">
 						<label>Descrição</label>
-						<textarea rows="8" cols="30" className="form-control txtarea-variation" ref="description">
+						<textarea rows="6" cols="30" className="form-control txtarea-variation" ref="description">
 						</textarea>
 					</div>
 

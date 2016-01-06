@@ -10,6 +10,12 @@
 	resize: vertical;
 }
 
+.variation-header{
+	padding-bottom: 9.5px;
+    margin: 42px 0 5px;
+    border-bottom: 1px solid transparent;
+}
+
 .btn-add-variation{
 	border-radius: 25px;
 	margin-left: 10px;
@@ -35,14 +41,14 @@
 	color: #777777;
 }
 
-.variations-btn-remove:hover{
-	cursor:pointer;
-	color: #000000;
-}
-
 .variation-icon-remove{
 	margin-top: 12px;
 	margin-left: 5px;
+}
+
+.variation-icon-remove:hover{
+	cursor:pointer;
+	color: #000000;
 }
 
 .form-buttons{
