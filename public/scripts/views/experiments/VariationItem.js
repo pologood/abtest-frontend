@@ -5,13 +5,13 @@ class VariationItem extends React.Component {
 	constructor(props) {
 		super(props);
 		this.props = props;
-		this.state = {index: props.index, hidden: true};
+		this.state = {index: props.index, disabled: true};
 	}
 
 	render() {
 		var buttonClass = "glyphicon glyphicon-trash variation-icon-remove";
-		if (this.state.hidden)
-			buttonClass += " hide";
+		if (this.state.disabled)
+			buttonClass += " disable-variations-btn-remove";
 
 		return (
 			<div className="form-group form-variations">
@@ -28,8 +28,8 @@ class VariationItem extends React.Component {
 
 	_onChangeTitle() {
 		var name = this.refs.name.value;
-		var hidden = !(name && name.trim());
-		this.setState({hidden: hidden})
+		var disabled = !(name && name.trim());
+		this.setState({disabled: disabled});
 	}
 }
 

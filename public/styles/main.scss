@@ -4,6 +4,10 @@
 	}
 }
 
+.form-buttons{
+	position: relative;
+	margin-bottom: 15px;
+}
 
 /******* Create Variation *******/
 .txtarea-variation{
@@ -35,6 +39,11 @@
     flex: 0 1 100%;
 }
 
+.disable-variations-btn-remove{
+	pointer-events: none;
+	color: #DCE4EC;
+}
+
 .variations-btn-remove{
 	font-size: 20px;
 	flex: 0 1 30px;
@@ -51,8 +60,4 @@
 	color: #000000;
 }
 
-.form-buttons{
-	position: relative;
-	margin-top:100%;
-}
 /******* END - Create Variation *******/
