@@ -45,7 +45,6 @@ class ListItem extends React.Component {
 		var index = experiments.indexOf(item);
 		experiments[index].enabled = !(experiments[index].enabled)
 		this.setState(experiments);
-		// ExperimentActions.toggleEnable(item.id, !item.enabled);
 	}
 }
 
