@@ -1,5 +1,6 @@
 import React from 'react';
 import ExperimentActions from '../../actions/Experiment';
+import Switch from 'react-bootstrap-switch';
 
 class ListItem extends React.Component {
 
@@ -16,21 +17,17 @@ class ListItem extends React.Component {
 
 		var listItems = [],
 			stateItems = this.state.experiments,
-			item = null;
+			item = null,
+			eoq = false;
 
 		if (stateItems) {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
 				item = stateItems[i];
-				var styleBtn = !item.enabled ? "success" : "danger";
-				var enableBtnText = item.enabled ? "Desabilitar" : "Habilitar";
-
 				listItems.push(
 					<ListGroupItem key={item.id}>
-						{i + 1} - {item.name}
+						<font className="default-font">{i + 1} - {item.name}</font>
 						<ButtonGroup className="pull-right">
-							<Button bsSize="xs"
-									bsStyle={styleBtn}
-									onClick={this.toggleEnable.bind(this, item)}>{enableBtnText}</Button>
+							<Switch className="toogle-experiment" size='mini' state={item.enabled} onClick={this.toggleEnable.bind(this, item)}/>
 						</ButtonGroup>
 					</ListGroupItem>
 				);
@@ -45,7 +42,11 @@ class ListItem extends React.Component {
 	}
 
 	toggleEnable(item) {
-		ExperimentActions.toggleEnable(item.id, !item.enabled);
+		var experiments = this.state.experiments;
+		var index = experiments.indexOf(item);
+		experiments[index].enabled = !(experiments[index].enabled)
+		this.setState(experiments);
+		// ExperimentActions.toggleEnable(item.id, !item.enabled);
 	}
 }
 

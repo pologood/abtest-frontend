@@ -4,6 +4,10 @@
 	}
 }
 
+.default-font{
+	font-size: 13px;
+}
+
 
 /******* Create Variation *******/
 .txtarea-variation{
@@ -19,3 +23,11 @@
 	display: inline;
 }
 /******* END - Create Variation *******/
+
+.bootstrap-switch{
+	border-radius: 10px !important;
+}
+
+.bootstrap-switch-handle-on.bootstrap-switch-primary{
+	background-color: #18bc9c !important;
+}
