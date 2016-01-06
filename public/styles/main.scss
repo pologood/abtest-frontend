@@ -18,4 +18,35 @@
 .label-variation{
 	display: inline;
 }
+
+.form-variations{
+	display: flex;
+}
+
+.variations-title{
+	padding-left: 0px;
+    padding-right: 0px;
+    flex: 0 1 100%;
+}
+
+.variations-btn-remove{
+	font-size: 20px;
+	flex: 0 1 30px;
+	color: #777777;
+}
+
+.variations-btn-remove:hover{
+	cursor:pointer;
+	color: #000000;
+}
+
+.variation-icon-remove{
+	margin-top: 12px;
+	margin-left: 5px;
+}
+
+.form-buttons{
+	position: relative;
+	margin-top:100%;
+}
 /******* END - Create Variation *******/

@@ -44,8 +44,10 @@ class Create extends React.Component {
 					</div>
 
 					<Variations/>
-					<button className="btn btn-primary btn-sm">
-							SALVAR</button>
+					<div className="form-buttons">
+						<button className="btn btn-primary btn-sm">
+								SALVAR</button>
+					</div>
 				</form>
 			</div>
 		);

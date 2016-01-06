@@ -15,12 +15,12 @@ class Variations extends React.Component {
 
 		for (var i = 0, len = variations.length; i < len; i++) {
 			variationItems.push(
-			    <div key={variations[i].hash} className="form-group">
-			        <div className="col-xs-11">
-			            <input type="text" className="form-control" name="title" placeholder="Title" />
+			    <div key={variations[i].hash} className="form-group form-variations">
+			        <div className="variations-title">
+			            <input type="text" className="form-control" name="title" placeholder="Variação" />
 			        </div>
-			        <div className="col-xs-1">
-			            <button type="button" className="btn btn-default removeButton" onClick={this._removeVariation.bind(this, i)}>-</button>
+			        <div className="variations-btn-remove">
+		            	<span className="glyphicon glyphicon-trash variation-icon-remove" aria-hidden="true" onClick={this._removeVariation.bind(this, i)}></span>
 			        </div>
 			    </div>
 			);
@@ -48,7 +48,6 @@ class Variations extends React.Component {
 	}
 
 	_removeVariation(itemId) {
-		debugger;
 		this.state.variations.splice(itemId, 1);
 		this.setState({variations: this.state.variations});
 	}
