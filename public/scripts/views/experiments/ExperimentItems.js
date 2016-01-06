@@ -17,8 +17,7 @@ class ListItem extends React.Component {
 
 		var listItems = [],
 			stateItems = this.state.experiments,
-			item = null,
-			eoq = false;
+			item = null;
 
 		if (stateItems) {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
