@@ -62,14 +62,14 @@ class Create extends React.Component {
 					<WhiteList items={this.state.whiteItems}/>
 
 					<div className="form-group">
-						<h5>Descrição</h5>
+						<h5>Hipótese</h5>
 						<textarea rows="4" cols="30" className="form-control input-sm txtarea-variation" ref="description">
 						</textarea>
 					</div>
 
 					<Variations items={this.state.variations}/>
 
-					<div className="form-buttons">
+					<div className="btn-toolbar pull-right">
 						<button className="btn btn-primary btn-sm">
 						SALVAR</button>
 					</div>
@@ -81,10 +81,6 @@ class Create extends React.Component {
 	_onChange() {
 		this.state = getExperimentCreateState();
 		this.setState(this.state);
-	}
-
-	_openListPage() {
-		window.location.hash = "/experiments";
 	}
 
 	_createExperiment(event) {
