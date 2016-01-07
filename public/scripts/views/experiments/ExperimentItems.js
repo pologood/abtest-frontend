@@ -10,11 +10,6 @@ class ListItem extends React.Component {
 	}
 
 	render() {
-		const rb = require('react-bootstrap'),
-			ListGroupItem = rb.ListGroupItem,
-			ButtonGroup = rb.ButtonGroup,
-			Button = rb.Button;
-
 		var listItems = [],
 			stateItems = this.props.experiments,
 			item = null;
@@ -23,19 +18,21 @@ class ListItem extends React.Component {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
 				item = stateItems[i];
 				listItems.push(
-					<ListGroupItem key={item.id}>
+					<li className="list-group-item">
 						<h5>{i + 1} - {item.name}</h5>
-						<ButtonGroup className="pull-right">
+						<div className="btn-group pull-right">
 							<Switch className="toogle-experiment" size='mini' state={item.enabled} onChange={this.toggleEnable.bind(this, item)}/>
-						</ButtonGroup>
-					</ListGroupItem>
+						</div>
+					</li>
 				);
 			}
 		}
 
 		return (
 			<div>
-				{listItems}
+				<ul className="list-group">
+					{listItems}
+				</ul>
 			</div>
 		);
 	}
