@@ -1,5 +1,6 @@
 import React from 'react';
 import ExperimentActions from '../../actions/Experiment';
+import Switch from 'react-bootstrap-switch';
 
 class ListItem extends React.Component {
 
@@ -21,16 +22,11 @@ class ListItem extends React.Component {
 		if (stateItems) {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
 				item = stateItems[i];
-				var styleBtn = !item.enabled ? "success" : "danger";
-				var enableBtnText = item.enabled ? "Desabilitar" : "Habilitar";
-
 				listItems.push(
 					<ListGroupItem key={item.id}>
-						{i + 1} - {item.name}
+						<h5>{i + 1} - {item.name}</h5>
 						<ButtonGroup className="pull-right">
-							<Button bsSize="xs"
-									bsStyle={styleBtn}
-									onClick={this.toggleEnable.bind(this, item)}>{enableBtnText}</Button>
+							<Switch className="toogle-experiment" size='mini' state={item.enabled} onClick={this.toggleEnable.bind(this, item)}/>
 						</ButtonGroup>
 					</ListGroupItem>
 				);

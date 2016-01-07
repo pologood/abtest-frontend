@@ -32,7 +32,7 @@ class Variations extends React.Component {
 					<h4 className="label-variation"><b>Variações</b></h4>
 					<button className="btn btn-success btn-sm btn-add-variation" onClick={this._addVariation.bind(this)}>
 						<span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						Adicionar mais
+						Adicionar
 					</button>
 				</div>
 
