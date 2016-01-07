@@ -4,7 +4,7 @@ import ExperimentActions from '../../actions/Experiment';
 
 function getExperimentsState() {
 	return {
-		features: ExperimentStore.getExperiments()
+		experiments: ExperimentStore.getExperiments()
 	};
 }
 

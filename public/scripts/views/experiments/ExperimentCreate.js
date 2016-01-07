@@ -1,15 +1,21 @@
 import React from 'react';
 import ExperimentActions from "../../actions/Experiment";
 import ExperimentStore from "../../stores/Experiment";
+
 class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {variations: []};
+
+		this.state = {
+			variations: [],
+			whiteItems: []
+		};
 	}
 
 	render() {
-		const Variations = require('./ExperimentVariations');
+		const Variations = require('./ExperimentVariations'),
+			WhiteList = require('./ExperimentCreateWhiteList');
 
 		return (
 			<div className="container">
@@ -24,18 +30,23 @@ class Create extends React.Component {
 					</div>
 
 					<div className="form-group">
-						<label>Porcentagem de tráfego para o experimento</label>
-						<select className="form-control col-xs-2" ref="percentage" defaultValue="50">
-							<option value="1">1%</option>
-							<option value="5">5%</option>
-							<option value="10">10%</option>
-							<option value="15">15%</option>
-							<option value="25">25%</option>
-							<option value="50">50%</option>
-							<option value="75">75%</option>
-							<option value="100">100%</option>
-						</select>
+						<label>Direcionamento</label>
+						<div className="form-inline">
+							<select className="form-control" ref="percentage" defaultValue="50">
+								<option value="1">1%</option>
+								<option value="5">5%</option>
+								<option value="10">10%</option>
+								<option value="15">15%</option>
+								<option value="25">25%</option>
+								<option value="50">50%</option>
+								<option value="75">75%</option>
+								<option value="100">100%</option>
+							</select>
+						</div>
 					</div>
+
+					<WhiteList items={this.state.whiteItems} add={this.addWhiteItem.bind(this)} 
+							remove={this.removeWhiteItem.bind(this)}/>
 
 					<div className="form-group">
 						<label>Descrição</label>
@@ -54,6 +65,7 @@ class Create extends React.Component {
 			</div>
 		);
 	}
+
 
 	changeVariation(item) {
 		var variations = this.state.variations;
@@ -81,6 +93,18 @@ class Create extends React.Component {
 				return this.setState({variations: this.state.variations});
 			}
 		}
+	}
+
+	addWhiteItem(item) {
+		var items = this.state.whiteItems;
+		items.push(item);
+		this.setState({whiteItems: items})
+	}
+
+	removeWhiteItem(itemId) {
+		var items = this.state.whiteItems;
+		items.splice(itemId, 1);
+		this.setState({whiteItems: items});
 	}
 
 	_openListPage() {

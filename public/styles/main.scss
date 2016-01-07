@@ -9,6 +9,11 @@
 	margin-bottom: 15px;
 }
 
+h5{
+	display: inline;
+    font-size: 13px !important;
+}
+
 /******* Create Variation *******/
 .txtarea-variation{
 	resize: vertical;
@@ -62,3 +67,11 @@
 }
 
 /******* END - Create Variation *******/
+
+.bootstrap-switch{
+	border-radius: 10px !important;
+}
+
+.bootstrap-switch-handle-on.bootstrap-switch-primary{
+	background-color: #18bc9c !important;
+}
