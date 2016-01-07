@@ -1,20 +1,26 @@
 import React from 'react';
 import ExperimentActions from "../../actions/Experiment";
 import ExperimentStore from "../../stores/Experiment";
+
 class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+
+		this.state = {
+			variations: [],
+			whiteItems: []
+		};
 	}
 
 	render() {
-		const Variations = require('./ExperimentVariations');
+		const Variations = require('./ExperimentVariations'),
+			WhiteList = require('./ExperimentCreateWhiteList');
 
 		return (
 			<div className="container">
 				<div className="page-header">
-					<h4><b>Cadastro de Experimento</b></h4>
+					<h3><b>Cadastro de Experimento</b></h3>
 				</div>
 
 				<form onSubmit={this._createExperiment.bind(this)}>
@@ -24,31 +30,81 @@ class Create extends React.Component {
 					</div>
 
 					<div className="form-group">
-						<label>Porcentagem de tráfego para o experimento</label>
-						<select className="form-control col-xs-2" ref="percentage" defaultValue="50">
-							<option value="1">1%</option>
-							<option value="5">5%</option>
-							<option value="10">10%</option>
-							<option value="15">15%</option>
-							<option value="25">25%</option>
-							<option value="50">50%</option>
-							<option value="75">75%</option>
-							<option value="100">100%</option>
-						</select>
+						<label>Direcionamento</label>
+						<div className="form-inline">
+							<select className="form-control" ref="percentage" defaultValue="50">
+								<option value="1">1%</option>
+								<option value="5">5%</option>
+								<option value="10">10%</option>
+								<option value="15">15%</option>
+								<option value="25">25%</option>
+								<option value="50">50%</option>
+								<option value="75">75%</option>
+								<option value="100">100%</option>
+							</select>
+						</div>
 					</div>
+
+					<WhiteList items={this.state.whiteItems} add={this.addWhiteItem.bind(this)} 
+							remove={this.removeWhiteItem.bind(this)}/>
 
 					<div className="form-group">
 						<label>Descrição</label>
-						<textarea rows="8" cols="30" className="form-control txtarea-variation" ref="description">
+						<textarea rows="6" cols="30" className="form-control txtarea-variation" ref="description">
 						</textarea>
 					</div>
 
-					<Variations/>
-					<button className="btn btn-primary btn-sm">
-							SALVAR</button>
+					<Variations items={this.state.variations} add={this.addVariation.bind(this)} 
+							remove={this.removeVariation.bind(this)} change={this.changeVariation.bind(this)}/>
+
+					<div className="form-buttons">
+						<button className="btn btn-primary btn-sm">
+								SALVAR</button>
+					</div>
 				</form>
 			</div>
 		);
+	}
+
+
+	changeVariation(item) {
+		var variations = this.state.variations;
+		for (var i = 0; i < this.state.variations.length; i++)
+			if(this.state.variations[i].hash == item.hash) {
+				this.state.variations[i] = item;
+				return this.setState({variations: variations});
+			}
+	}
+
+	addVariation() {
+		var item = {
+			hash: new Date().getTime()
+		};
+		var variations = this.state.variations;
+		variations.push(item);
+		this.setState({variations: variations});
+	}
+
+	removeVariation(itemId) {
+		var variations = this.state.variations;
+		for (var i = 0; i < this.state.variations.length; i++) {
+			if(this.state.variations[i].hash == itemId) {
+				this.state.variations.splice(i, 1);
+				return this.setState({variations: this.state.variations});
+			}
+		}
+	}
+
+	addWhiteItem(item) {
+		var items = this.state.whiteItems;
+		items.push(item);
+		this.setState({whiteItems: items})
+	}
+
+	removeWhiteItem(itemId) {
+		var items = this.state.whiteItems;
+		items.splice(itemId, 1);
+		this.setState({whiteItems: items});
 	}
 
 	_openListPage() {
