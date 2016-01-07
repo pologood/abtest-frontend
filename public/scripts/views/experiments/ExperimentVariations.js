@@ -1,4 +1,5 @@
 import React from 'react';
+import ExperimentCreateActions from "../../actions/ExperimentCreate";
 
 class Variations extends React.Component {
 
@@ -15,8 +16,7 @@ class Variations extends React.Component {
 
 		for (var i = 0, len = variations.length; i < len; i++) {
 			variationsEls.push(
-				<VariationItem index={i} change={this.props.change} item={variations[i]} 
-						add={this.props.add} remove={this.props.remove} key={variations[i].hash}/>
+				<VariationItem index={i} item={variations[i]} key={variations[i].hash}/>
 			);
 		}
 
@@ -37,7 +37,7 @@ class Variations extends React.Component {
 
 	_addVariation(event) {
 		event.preventDefault();
-		this.props.add();
+		ExperimentCreateActions.createVariation();
 	}
 
 }

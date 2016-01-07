@@ -26,7 +26,7 @@ class ListItem extends React.Component {
 					<ListGroupItem key={item.id}>
 						<h5>{i + 1} - {item.name}</h5>
 						<ButtonGroup className="pull-right">
-							<Switch className="toogle-experiment" size='mini' state={item.enabled} onClick={this.toggleEnable.bind(this, item)}/>
+							<Switch className="toogle-experiment" size='mini' state={item.enabled} onChange={this.toggleEnable.bind(this, item)}/>
 						</ButtonGroup>
 					</ListGroupItem>
 				);

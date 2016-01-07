@@ -1,4 +1,5 @@
 import React from 'react';
+import ExperimentCreateActions from "../../actions/ExperimentCreate";
 
 class CreateWhiteListItems extends React.Component {
 
@@ -27,9 +28,9 @@ class CreateWhiteListItems extends React.Component {
 				}
 
 				whiteItemsEls.push(
-					<button key={i} className={buttonColor} type="button">
+					<button key={item.hash} className={buttonColor} type="button">
 						<span className={icon}></span> {item.name} &nbsp;
-						<span className="glyphicon glyphicon-remove" onClick={this.props.remove.bind(this, i)}></span>
+						<span className="glyphicon glyphicon-remove" onClick={this._deleteWhiteItem.bind(this, item.hash)}></span>
 					</button>
 				)
 			}
@@ -40,6 +41,10 @@ class CreateWhiteListItems extends React.Component {
 				{whiteItemsEls}
 			</div>
 		);
+	}
+
+	_deleteWhiteItem(hash) {
+		ExperimentCreateActions.deleteWhiteItem(hash);
 	}
 }
 
