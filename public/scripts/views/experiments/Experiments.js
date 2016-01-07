@@ -16,11 +16,11 @@ class Experiments extends React.Component {
 	}
 
 	componentDidMount() {
-		ExperimentStore.addChangeListener(this._onChange);
+		ExperimentStore.addChangeListener(this._onChange.bind(this));
 	}
 
 	componentWillUnmount() {
-		ExperimentStore.removeChangeListener(this._onChange);
+		ExperimentStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	render() {
@@ -51,7 +51,8 @@ class Experiments extends React.Component {
 	}
 
 	_onChange() {
-		this.setState(getExperimentsState());
+		this.state = getExperimentsState();
+		this.setState(this.state);
 	}
 }
 
