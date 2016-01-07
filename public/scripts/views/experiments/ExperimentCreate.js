@@ -6,7 +6,11 @@ class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {whiteItems: []};
+
+		this.state = {
+			variations: [],
+			whiteItems: []
+		};
 	}
 
 	render() {
@@ -16,7 +20,7 @@ class Create extends React.Component {
 		return (
 			<div className="container">
 				<div className="page-header">
-					<h4><b>Cadastro de Experimento</b></h4>
+					<h3><b>Cadastro de Experimento</b></h3>
 				</div>
 
 				<form onSubmit={this._createExperiment.bind(this)}>
@@ -46,16 +50,49 @@ class Create extends React.Component {
 
 					<div className="form-group">
 						<label>Descrição</label>
-						<textarea rows="8" cols="30" className="form-control txtarea-variation" ref="description">
+						<textarea rows="6" cols="30" className="form-control txtarea-variation" ref="description">
 						</textarea>
 					</div>
 
-					<Variations/>
-					<button className="btn btn-primary btn-sm">
-							SALVAR</button>
+					<Variations items={this.state.variations} add={this.addVariation.bind(this)} 
+							remove={this.removeVariation.bind(this)} change={this.changeVariation.bind(this)}/>
+
+					<div className="form-buttons">
+						<button className="btn btn-primary btn-sm">
+								SALVAR</button>
+					</div>
 				</form>
 			</div>
 		);
+	}
+
+
+	changeVariation(item) {
+		var variations = this.state.variations;
+		for (var i = 0; i < this.state.variations.length; i++)
+			if(this.state.variations[i].hash == item.hash) {
+				this.state.variations[i] = item;
+				return this.setState({variations: variations});
+			}
+	}
+
+	addVariation() {
+		var item = {
+			hash: new Date().getTime()
+		};
+		var variations = this.state.variations;
+		variations.push(item);
+		this.setState({variations: variations});
+	}
+
+	removeVariation(itemId) {
+		var variations = this.state.variations;
+		for (var i = 0; i < this.state.variations.length; i++) {
+			if(this.state.variations[i].hash == itemId) {
+				this.state.variations.splice(i, 1);
+				return this.setState({variations: this.state.variations});
+			}
+		}
 	}
 
 	addWhiteItem(item) {
