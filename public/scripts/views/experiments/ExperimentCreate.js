@@ -6,7 +6,7 @@ class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {whiteItems: []};
 	}
 
 	render() {
@@ -26,7 +26,7 @@ class Create extends React.Component {
 					</div>
 
 					<div className="form-group">
-						<label>Porcentagem de tráfego para o experimento</label>
+						<label>Direcionamento</label>
 						<div className="form-inline">
 							<select className="form-control" ref="percentage" defaultValue="50">
 								<option value="1">1%</option>
@@ -41,7 +41,8 @@ class Create extends React.Component {
 						</div>
 					</div>
 
-					<WhiteList/>
+					<WhiteList items={this.state.whiteItems} add={this.addWhiteItem.bind(this)} 
+							remove={this.removeWhiteItem.bind(this)}/>
 
 					<div className="form-group">
 						<label>Descrição</label>
@@ -55,6 +56,18 @@ class Create extends React.Component {
 				</form>
 			</div>
 		);
+	}
+
+	addWhiteItem(item) {
+		var items = this.state.whiteItems;
+		items.push(item);
+		this.setState({whiteItems: items})
+	}
+
+	removeWhiteItem(itemId) {
+		var items = this.state.whiteItems;
+		items.splice(itemId, 1);
+		this.setState({whiteItems: items});
 	}
 
 	_openListPage() {
