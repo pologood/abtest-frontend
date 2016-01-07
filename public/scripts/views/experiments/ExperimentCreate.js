@@ -1,16 +1,30 @@
 import React from 'react';
+import ExperimentCreateActions from "../../actions/ExperimentCreate";
+import ExperimentCreateStore from "../../stores/ExperimentCreate";
 import ExperimentActions from "../../actions/Experiment";
 import ExperimentStore from "../../stores/Experiment";
+
+function getExperimentCreateState() {
+	return {
+		variations: ExperimentCreateStore.getVariations(),
+		whiteItems: ExperimentCreateStore.getWhiteItems()
+	} 
+}
 
 class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			variations: [],
-			whiteItems: []
-		};
+		this.state = getExperimentCreateState();
+	}
+
+	componentDidMount() {
+		ExperimentCreateStore.addChangeListener(this._onChange.bind(this));
+	}
+
+	componentWillUnmount() {
+		ExperimentCreateStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	render() {
@@ -25,14 +39,14 @@ class Create extends React.Component {
 
 				<form onSubmit={this._createExperiment.bind(this)}>
 					<div className="form-group">
-						<label>Título</label>
-						<input className="form-control" type="text" ref="name"/>
+						<h5>Título</h5>
+						<input className="form-control input-sm" type="text" ref="name"/>
 					</div>
 
 					<div className="form-group">
-						<label>Direcionamento</label>
+						<h5>Porcentagem de tráfego para o experimento</h5>
 						<div className="form-inline">
-							<select className="form-control" ref="percentage" defaultValue="50">
+							<select className="form-control input-sm" ref="percentage" defaultValue="50">
 								<option value="1">1%</option>
 								<option value="5">5%</option>
 								<option value="10">10%</option>
@@ -45,66 +59,28 @@ class Create extends React.Component {
 						</div>
 					</div>
 
-					<WhiteList items={this.state.whiteItems} add={this.addWhiteItem.bind(this)} 
-							remove={this.removeWhiteItem.bind(this)}/>
+					<WhiteList items={this.state.whiteItems}/>
 
 					<div className="form-group">
-						<label>Descrição</label>
-						<textarea rows="6" cols="30" className="form-control txtarea-variation" ref="description">
+						<h5>Descrição</h5>
+						<textarea rows="4" cols="30" className="form-control input-sm txtarea-variation" ref="description">
 						</textarea>
 					</div>
 
-					<Variations items={this.state.variations} add={this.addVariation.bind(this)} 
-							remove={this.removeVariation.bind(this)} change={this.changeVariation.bind(this)}/>
+					<Variations items={this.state.variations}/>
 
 					<div className="form-buttons">
 						<button className="btn btn-primary btn-sm">
-								SALVAR</button>
+						SALVAR</button>
 					</div>
 				</form>
 			</div>
 		);
 	}
 
-
-	changeVariation(item) {
-		var variations = this.state.variations;
-		for (var i = 0; i < this.state.variations.length; i++)
-			if(this.state.variations[i].hash == item.hash) {
-				this.state.variations[i] = item;
-				return this.setState({variations: variations});
-			}
-	}
-
-	addVariation() {
-		var item = {
-			hash: new Date().getTime()
-		};
-		var variations = this.state.variations;
-		variations.push(item);
-		this.setState({variations: variations});
-	}
-
-	removeVariation(itemId) {
-		var variations = this.state.variations;
-		for (var i = 0; i < this.state.variations.length; i++) {
-			if(this.state.variations[i].hash == itemId) {
-				this.state.variations.splice(i, 1);
-				return this.setState({variations: this.state.variations});
-			}
-		}
-	}
-
-	addWhiteItem(item) {
-		var items = this.state.whiteItems;
-		items.push(item);
-		this.setState({whiteItems: items})
-	}
-
-	removeWhiteItem(itemId) {
-		var items = this.state.whiteItems;
-		items.splice(itemId, 1);
-		this.setState({whiteItems: items});
+	_onChange() {
+		this.state = getExperimentCreateState();
+		this.setState(this.state);
 	}
 
 	_openListPage() {
