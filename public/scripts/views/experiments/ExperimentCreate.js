@@ -5,7 +5,7 @@ class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {variations: []};
 	}
 
 	render() {
@@ -43,7 +43,9 @@ class Create extends React.Component {
 						</textarea>
 					</div>
 
-					<Variations/>
+					<Variations items={this.state.variations} add={this.addVariation.bind(this)} 
+							remove={this.removeVariation.bind(this)} change={this.changeVariation.bind(this)}/>
+
 					<div className="form-buttons">
 						<button className="btn btn-primary btn-sm">
 								SALVAR</button>
@@ -51,6 +53,34 @@ class Create extends React.Component {
 				</form>
 			</div>
 		);
+	}
+
+	changeVariation(item) {
+		var variations = this.state.variations;
+		for (var i = 0; i < this.state.variations.length; i++)
+			if(this.state.variations[i].hash == item.hash) {
+				this.state.variations[i] = item;
+				return this.setState({variations: variations});
+			}
+	}
+
+	addVariation() {
+		var item = {
+			hash: new Date().getTime()
+		};
+		var variations = this.state.variations;
+		variations.push(item);
+		this.setState({variations: variations});
+	}
+
+	removeVariation(itemId) {
+		var variations = this.state.variations;
+		for (var i = 0; i < this.state.variations.length; i++) {
+			if(this.state.variations[i].hash == itemId) {
+				this.state.variations.splice(i, 1);
+				return this.setState({variations: this.state.variations});
+			}
+		}
 	}
 
 	_openListPage() {

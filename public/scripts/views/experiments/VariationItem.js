@@ -4,32 +4,36 @@ class VariationItem extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.props = props;
-		this.state = {index: props.index, disabled: true};
 	}
 
 	render() {
 		var buttonClass = "glyphicon glyphicon-trash variation-icon-remove";
-		if (this.state.disabled)
+
+		if (!this.props.item.enabled)
 			buttonClass += " disable-variations-btn-remove";
 
 		return (
 			<div className="form-group form-variations">
 		        <div className="variations-title">
-		            <input type="text" className="form-control" ref="name" placeholder="Nome da variação" 
-		            		onChange={this._onChangeTitle.bind(this)}/>
+		            <input type="text" className="form-control" ref="name" defaultValue={this.props.item.name} placeholder="Nome da variação" 
+		            		onChange={this._onChangeName.bind(this)}/>
 		        </div>
 		        <div className="variations-btn-remove">
-	            	<span className={buttonClass} onClick={this.props.remove}></span>
+	            	<span className={buttonClass} onClick={this.props.remove.bind(null, this.props.item.hash)}></span>
 		        </div>
 		    </div>
     	);
 	}
 
-	_onChangeTitle() {
-		var name = this.refs.name.value;
-		var disabled = !(name && name.trim());
-		this.setState({disabled: disabled});
+	_onChangeName() {
+		var enabled = !(name && name.trim());
+		var item = {
+			hash: this.props.item.hash,
+			name: this.refs.name.value,
+			enabled: enabled			
+		}
+
+		this.props.change(item);
 	}
 }
 

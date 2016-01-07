@@ -4,21 +4,19 @@ class Variations extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {};
-		this.state.variations = [{hash: new Date().getTime()}];
 	}
 
 	render() {
 
 		const VariationItem = require('./VariationItem.js');
 
-		var variations = this.state.variations;
-		var variationList = [];
+		var variations = this.props.items;
+		var variationsEls = [];
 
 		for (var i = 0, len = variations.length; i < len; i++) {
-			variationList.push(
-				<VariationItem index={i} remove={this._removeVariation.bind(this, i)} 
-						key={variations[i].hash}/>
+			variationsEls.push(
+				<VariationItem index={i} change={this.props.change} item={variations[i]} 
+						add={this.props.add} remove={this.props.remove} key={variations[i].hash}/>
 			);
 		}
 
@@ -32,21 +30,16 @@ class Variations extends React.Component {
 					</button>
 				</div>
 
-				{variationList}
+				{variationsEls}
 			</div>
     	);
 	}
 
-	_removeVariation(itemId) {
-		this.state.variations.splice(itemId, 1);
-		this.setState({variations: this.state.variations});
-	}
-
 	_addVariation(event) {
 		event.preventDefault();
-		this.state.variations.push({hash: new Date().getTime()});
-		this.setState({variations: this.state.variations});
+		this.props.add();
 	}
+
 }
 
 module.exports = Variations;
