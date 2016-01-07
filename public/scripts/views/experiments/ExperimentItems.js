@@ -15,13 +15,13 @@ class ListItem extends React.Component {
 			Button = rb.Button;
 
 		var listItems = [],
-			stateItems = this.state.experiments,
+			stateItems = this.props.experiments,
 			item = null;
-
+			
 		if (stateItems) {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
 				item = stateItems[i];
-				var styleBtn = !item.enabled ? "success" : "danger";
+				var styleBtn = item.enabled ? "success" : "danger";
 				var enableBtnText = item.enabled ? "Desabilitar" : "Habilitar";
 
 				listItems.push(
