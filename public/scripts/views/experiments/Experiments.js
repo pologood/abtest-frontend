@@ -24,24 +24,17 @@ class Experiments extends React.Component {
 	}
 
 	render() {
-		const rb = require('react-bootstrap'),
-			ListItems = require('./ExperimentItems.js'),
-			PageHeader = rb.PageHeader,
-			ListGroup = rb.ListGroup,
-			Button = rb.Button;
+		const ListItems = require('./ExperimentItems.js');
 
 		return (
 			<div className="container">
-				<PageHeader>
-					Experiências
-					<Button className="pull-right"
-							bsSize="xs"
-							bsStyle="primary"
-							onClick={this._openCreationPage.bind(this)}>Cadastrar experimento</Button>
-				</PageHeader>
-				<ListGroup>
-					<ListItems experiments={this.state.experiments}/>
-				</ListGroup>
+				<div className="page-header">
+					<h1>Experiências</h1>
+					<button className="btn btn-primary btn-xs pull-right" onClick={this._openCreationPage.bind(this)}>
+						Cadastrar experimento
+					</button>
+				</div>
+				<ListItems experiments={this.state.experiments}/>			
 			</div>
 		);
 	}
