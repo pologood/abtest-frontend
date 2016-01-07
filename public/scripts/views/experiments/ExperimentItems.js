@@ -24,7 +24,7 @@ class ListItem extends React.Component {
 				item = stateItems[i];
 				listItems.push(
 					<ListGroupItem key={item.id}>
-						<font className="default-font">{i + 1} - {item.name}</font>
+						<h5>{i + 1} - {item.name}</h5>
 						<ButtonGroup className="pull-right">
 							<Switch className="toogle-experiment" size='mini' state={item.enabled} onClick={this.toggleEnable.bind(this, item)}/>
 						</ButtonGroup>
