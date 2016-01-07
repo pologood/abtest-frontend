@@ -16,7 +16,6 @@ class Header extends React.Component {
 				</div>
 				<div className="nav navbar-nav">
 					<li><a eventKey={1} href="#/experiments">Experimentos</a></li>
-			
 				</div>
 			</nav>
 		);
