@@ -63,13 +63,13 @@ class Create extends React.Component {
 
 					<div className="form-group">
 						<h5>Hipótese</h5>
-						<textarea rows="4" cols="30" className="form-control input-sm txtarea-variation" ref="description">
+						<textarea rows="4" cols="20" className="form-control input-sm txtarea-variation" ref="description">
 						</textarea>
 					</div>
 
 					<Variations items={this.state.variations}/>
 
-					<div className="btn-toolbar pull-right">
+					<div className="btn-toolbar">
 						<button className="btn btn-primary btn-sm">
 						SALVAR</button>
 					</div>
@@ -85,15 +85,17 @@ class Create extends React.Component {
 
 	_createExperiment(event) {
 		event.preventDefault();
-		
+
 		var name = this.refs.name.value,
 			description = this.refs.description.value,
 			percentage = this.refs.percentage.value,
-			domainList = null,
-			groupList = null,
-			userList = null;
+			enabled = true,
+			domains = null,
+			groups = null,
+			users = null,
+			variations = this.state.variations;
 
-		ExperimentActions.create(name, description, percentage, domainList, groupList, userList);
+		ExperimentActions.create(name, description, enabled, percentage, domains, groups, users, variations);
 	}
 }
 
