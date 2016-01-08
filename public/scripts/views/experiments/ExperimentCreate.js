@@ -2,7 +2,6 @@ import React from 'react';
 import ExperimentCreateActions from "../../actions/ExperimentCreate";
 import ExperimentCreateStore from "../../stores/ExperimentCreate";
 import ExperimentActions from "../../actions/Experiment";
-import ExperimentStore from "../../stores/Experiment";
 
 function getExperimentCreateState() {
 	return {

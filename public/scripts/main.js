@@ -3,7 +3,6 @@ import assign from 'object-assign';
 import EventEmitter from 'events';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import rb from 'react-bootstrap';
 import backbone from 'backbone';
 import underscore from 'underscore';
 import jQuery from 'jquery';
@@ -11,6 +10,9 @@ import jQuery from 'jquery';
 import app from './app.js';
 import Index from "./views/Index.js";
 import Router from "./config/Router";
+
+import ExperimentCreateStore from "./stores/ExperimentCreate";
+import ExperimentStore from "./stores/Experiment";
 
 Index.render();
 
