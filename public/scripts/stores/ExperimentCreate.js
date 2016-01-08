@@ -5,8 +5,18 @@ import ExperimentCreateConstants from '../constants/ExperimentCreate';
 
 const CHANGE_EVENT = 'changeExperimentCreate';
 
-var variations = [];
-var whiteItems = [];
+var variations = [
+	{
+		hash: new Date().getTime(),
+		name: "original",
+		enabled: true
+	}
+];
+
+var whiteItems = [],
+	user = [],
+	group = [],
+	domain = [];
 
 function updateVariation(hash, name, enabled) {
 	var item = {
@@ -34,18 +44,31 @@ function deleteVariation(hash) {
 }
 
 function createWhiteItem (name, type) {
-	var item = {
-		hash: new Date().getTime(),
-		name: name,
-		type: type
-	};
-	whiteItems.push(item);
+	switch(type) {
+	    case "domain":
+	        domain.push(name);
+	        break;
+	    case "group":
+	        group.push(name);
+	        break;
+	   	case "user":
+	        user.push(name);
+	        break;
+	}
 }
 
-function deleteWhiteItem (hash) {
-	for (var i = 0; i < whiteItems.length; i++)
-		if(whiteItems[i].hash == hash)
-			return whiteItems.splice(i, 1);
+function deleteWhiteItem (name, type) {
+	switch(type) {
+	    case "domain":
+	        domain.splice(domain.indexOf(name),1);
+	        break;
+	    case "group":
+	    	group.splice(group.indexOf(name),1);       
+	        break;
+	   	case "user":
+	   		user.splice(user.indexOf(name),1);        
+	        break;
+	}
 }
 
 const ExperimentCreate = assign({}, EventEmitter.prototype, {
@@ -54,8 +77,16 @@ const ExperimentCreate = assign({}, EventEmitter.prototype, {
 	    return variations;
 	},
 
-	getWhiteItems: function() {
-	    return whiteItems;
+	getWhiteItemsUser: function() {
+	    return user;
+	},
+
+	getWhiteItemsDomain: function() {
+	    return domain;
+	},
+
+	getWhiteItemsGroup: function() {
+	    return group;
 	},
 
 	emitChange: function() {
@@ -72,7 +103,6 @@ const ExperimentCreate = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(action) {
-
 	switch(action.actionType) {
 		case ExperimentCreateConstants.UPDATEVARIATION:
 			updateVariation(action.hash, action.name, action.enabled);
@@ -95,7 +125,7 @@ AppDispatcher.register(function(action) {
 			break;
 
 		case ExperimentCreateConstants.DELETEWHITEITEM:
-			deleteWhiteItem(action.hash);
+			deleteWhiteItem(action.name, action.type);
 			ExperimentCreate.emitChange();
 			break;
 

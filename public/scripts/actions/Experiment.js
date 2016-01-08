@@ -9,16 +9,18 @@ class Experiment {
 			enabled: enabled
 		});
 	}
-	create (name, description, percentage, domains, groups, users) {
+	create (name, description, enabled, percentage, domains, groups, users, variations) {
 		AppDispatcher.dispatch({
 			actionType: ExperimentConstants.CREATE,
 			experiment: {
 				name: name,
 				description: description,
 				percentage: percentage,
+				enabled: enabled,
 				domains: domains,
 				groups: groups,
-				users: users
+				users: users,
+				variations: variations
 			}
 		});
 	}
