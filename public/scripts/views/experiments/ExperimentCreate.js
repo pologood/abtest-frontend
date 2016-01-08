@@ -7,7 +7,9 @@ import ExperimentStore from "../../stores/Experiment";
 function getExperimentCreateState() {
 	return {
 		variations: ExperimentCreateStore.getVariations(),
-		whiteItems: ExperimentCreateStore.getWhiteItems()
+		whiteItemsUser: ExperimentCreateStore.getWhiteItemsUser(),
+		whiteItemsDomain: ExperimentCreateStore.getWhiteItemsDomain(),
+		whiteItemsGroup: ExperimentCreateStore.getWhiteItemsGroup()
 	} 
 }
 
@@ -30,6 +32,12 @@ class Create extends React.Component {
 	render() {
 		const Variations = require('./ExperimentVariations'),
 			WhiteList = require('./ExperimentCreateWhiteList');
+		
+		var whiteItemsType = {
+			user : this.state.whiteItemsUser,
+			domain : this.state.whiteItemsDomain,
+			group : this.state.whiteItemsGroup
+		}; 
 
 		return (
 			<div className="container">
@@ -59,7 +67,7 @@ class Create extends React.Component {
 						</div>
 					</div>
 
-					<WhiteList items={this.state.whiteItems}/>
+					<WhiteList items={whiteItemsType}/>
 
 					<div className="form-group">
 						<h5>Hipótese</h5>

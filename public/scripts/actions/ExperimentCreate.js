@@ -32,10 +32,11 @@ class ExperimentCreate {
 		});
 	}
 
-	deleteWhiteItem (hash) {
+	deleteWhiteItem (name, type) {
 		AppDispatcher.dispatch({
 			actionType: ExperimentCreateConstants.DELETEWHITEITEM,
-			hash : hash
+			name : name,
+			type: type
 		});
 	}
 }
