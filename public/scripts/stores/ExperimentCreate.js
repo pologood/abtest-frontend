@@ -5,13 +5,7 @@ import ExperimentCreateConstants from '../constants/ExperimentCreate';
 
 const CHANGE_EVENT = 'changeExperimentCreate';
 
-var variations = [
-	{
-		hash: new Date().getTime(),
-		name: "original",
-		enabled: true
-	}
-];
+var variations = [];
 
 var whiteItems = [],
 	user = [],
