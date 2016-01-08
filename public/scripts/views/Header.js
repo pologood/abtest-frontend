@@ -8,22 +8,16 @@ class Header extends React.Component {
 	}
 
 	render() {
-		const rb = require('react-bootstrap'),
-			Navbar = rb.Navbar,
-			Nav = rb.Nav,
-			NavItem = rb.NavItem;
 
 		return (
-			<Navbar>
-				<Navbar.Header>
-					<Navbar.Brand>
-						<a href="#">ABTest</a>
-					</Navbar.Brand>
-				</Navbar.Header>
-				<Nav>
-					<NavItem eventKey={1} href="#/experiments">Experimentos</NavItem>
-				</Nav>
-			</Navbar>
+			<nav className="navbar navbar-default">
+				<div className="navbar-header">
+						<a className="navbar-brand" href="#">ABTest</a>
+				</div>
+				<div className="nav navbar-nav">
+					<li><a eventKey={1} href="#/experiments">Experimentos</a></li>
+				</div>
+			</nav>
 		);
 		return <Navigationbar/>;
 	}
