@@ -13,6 +13,12 @@ class Experiment {
 		});
 	}
 
+	get(id, callback) {
+		return Ajax.call({
+			url: app.backendUrl + "/experiments/" + id,
+			success: callback
+		});
+	}
 }
 
 module.exports = new Experiment();

@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import backbone from 'backbone';
 import underscore from 'underscore';
 import jQuery from 'jquery';
+import Modal from 'simple-react-modal';
 
 import app from './app.js';
 import Index from "./views/Index.js";

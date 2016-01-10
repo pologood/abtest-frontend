@@ -22,6 +22,10 @@ const Experiment = assign({}, EventEmitter.prototype, {
 	    return ExperimentCollection.getExperiments();
 	},
 
+	getExperiment: function(id, callback) {
+		return ExperimentAjax.get(id, callback);
+	},
+
 	emitChange: function() {
 		this.emit(CHANGE_EVENT);
 	},
