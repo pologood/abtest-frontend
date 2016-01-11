@@ -12,9 +12,9 @@ class CreateWhiteListItems extends React.Component {
 		var whiteItems = this.props.items,
 			whiteItemsList = [],
 			whiteItemsEls = [],
-			whiteItemsUser = whiteItems.user,
-			whiteItemsDomain = whiteItems.domain,
-			whiteItemsGroup = whiteItems.group;
+			whiteItemsUser = whiteItems.users || [],
+			whiteItemsDomain = whiteItems.domains || [],
+			whiteItemsGroup = whiteItems.groups || [];
 
 		var buttonColor, icon;
 

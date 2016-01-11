@@ -16,6 +16,7 @@ class Experiment {
 	get(id, callback) {
 		return Ajax.call({
 			url: app.backendUrl + "/experiments/" + id,
+			contentType: "application/json",
 			success: callback
 		});
 	}

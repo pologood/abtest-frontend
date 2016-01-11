@@ -12,11 +12,13 @@ class Experiment extends React.Component {
 	}
 
 	show(id) {
-		this.state.item = ExperimentStore.getExperiment(id);
-		this.setState({
-			show: true,
-			item: this.state.item
-		});
+		ExperimentStore.getExperiment(id, function (item) {
+			this.state.item = item;
+			this.setState({
+				show: true,
+				item: this.state.item
+			});
+		}.bind(this));
 	}
 
 	close() {

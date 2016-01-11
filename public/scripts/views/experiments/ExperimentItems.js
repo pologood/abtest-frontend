@@ -40,8 +40,8 @@ class ListItem extends React.Component {
 		);
 	}
 
-	openModal() {
-		this.refs.experimentModal.show();
+	openModal(id) {
+		this.refs.experimentModal.show(id);
 	}
 
 	toggleEnable(item) {

@@ -33,9 +33,9 @@ class Create extends React.Component {
 			WhiteList = require('./ExperimentCreateWhiteList');
 		
 		var whiteItemsType = {
-			user : this.state.whiteItemsUser,
-			domain : this.state.whiteItemsDomain,
-			group : this.state.whiteItemsGroup
+			users : this.state.whiteItemsUser,
+			domains : this.state.whiteItemsDomain,
+			groups : this.state.whiteItemsGroup
 		}; 
 
 		return (

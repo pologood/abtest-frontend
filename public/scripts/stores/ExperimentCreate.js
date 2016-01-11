@@ -8,9 +8,9 @@ const CHANGE_EVENT = 'changeExperimentCreate';
 var variations = [];
 
 var whiteItems = [],
-	user = [],
-	group = [],
-	domain = [];
+	users = [],
+	groups = [],
+	domains = [];
 
 function updateVariation(hash, name, enabled) {
 	var item = {
@@ -40,13 +40,13 @@ function deleteVariation(hash) {
 function createWhiteItem (name, type) {
 	switch(type) {
 	    case "domain":
-	        domain.push(name);
+	        domains.push(name);
 	        break;
 	    case "group":
-	        group.push(name);
+	        groups.push(name);
 	        break;
 	   	case "user":
-	        user.push(name);
+	        users.push(name);
 	        break;
 	}
 }
@@ -54,13 +54,13 @@ function createWhiteItem (name, type) {
 function deleteWhiteItem (name, type) {
 	switch(type) {
 	    case "domain":
-	        domain.splice(domain.indexOf(name),1);
+	        domains.splice(domains.indexOf(name),1);
 	        break;
 	    case "group":
-	    	group.splice(group.indexOf(name),1);       
+	    	groups.splice(groups.indexOf(name),1);       
 	        break;
 	   	case "user":
-	   		user.splice(user.indexOf(name),1);        
+	   		users.splice(users.indexOf(name),1);        
 	        break;
 	}
 }
@@ -72,15 +72,15 @@ const ExperimentCreate = assign({}, EventEmitter.prototype, {
 	},
 
 	getWhiteItemsUser: function() {
-	    return user;
+	    return users;
 	},
 
 	getWhiteItemsDomain: function() {
-	    return domain;
+	    return domains;
 	},
 
 	getWhiteItemsGroup: function() {
-	    return group;
+	    return groups;
 	},
 
 	emitChange: function() {
