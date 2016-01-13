@@ -1,7 +1,7 @@
 class App {
 
 	constructor() {
-	    this.backendUrl = "http://192.168.1.219:8080/api/v1";
+	    this.backendUrl = "http://abtest-env.elasticbeanstalk.com/api/v1";
 	}
 }
 

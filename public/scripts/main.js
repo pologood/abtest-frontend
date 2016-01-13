@@ -3,14 +3,15 @@ import assign from 'object-assign';
 import EventEmitter from 'events';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import reactMixin from 'react-mixin';
 import backbone from 'backbone';
 import underscore from 'underscore';
 import jQuery from 'jquery';
 import Modal from 'simple-react-modal';
 
-import app from './app.js';
-import Index from "./views/Index.js";
+import app from './app';
 import Router from "./config/Router";
+import Index from "./views/Index";
 
 import ExperimentCreateStore from "./stores/ExperimentCreate";
 import ExperimentStore from "./stores/Experiment";
