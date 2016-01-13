@@ -1,6 +1,8 @@
 import React from 'react';
 import ExperimentStore from "../../stores/Experiment";
 import ExperimentActions from '../../actions/Experiment';
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
 function getExperimentsState() {
 	return {
@@ -40,7 +42,7 @@ class Experiments extends React.Component {
 	}
 
 	_openCreationPage() {
-		window.location.hash = "/experiments/create";
+		this.history.pushState(null, '/experiments/create');
 	}
 
 	_onChange() {
@@ -48,5 +50,7 @@ class Experiments extends React.Component {
 		this.setState(this.state);
 	}
 }
+
+reactMixin.onClass(Experiments, History);
 
 module.exports = Experiments;

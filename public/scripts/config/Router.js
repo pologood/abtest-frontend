@@ -5,6 +5,7 @@ import { createHistory } from 'history';
 
 import Experiments from "../views/experiments/Experiments";
 import ExperimentCreate from "../views/experiments/ExperimentCreate";
+import NotFound from "../views/NotFound";
 
 class Routes extends React.Component {
 
@@ -14,10 +15,11 @@ class Routes extends React.Component {
 
 	render() {
 		return (
-			<Router>
+			<Router history={createHistory()}>
 				<Route path="/" component={Experiments}/>
 				<Route path="/experiments" component={Experiments}/>
 				<Route path="/experiments/create" component={ExperimentCreate}/>
+				<Route path="*" component={NotFound}/>
 			</Router>
 		);
 	}
