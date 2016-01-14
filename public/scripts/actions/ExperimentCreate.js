@@ -2,6 +2,13 @@ const AppDispatcher = require('../config/AppDispatcher'),
 	ExperimentCreateConstants = require('../constants/ExperimentCreate');
 
 class ExperimentCreate {
+	createForm (id) {
+		AppDispatcher.dispatch({
+			actionType: ExperimentCreateConstants.CREATEFORM,
+			id : id
+		});
+	}
+
 	updateVariation (hash, name, enabled) {
 		AppDispatcher.dispatch({
 			actionType: ExperimentCreateConstants.UPDATEVARIATION,

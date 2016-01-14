@@ -1,6 +1,5 @@
 import React from 'react';
 import ExperimentStore from "../../stores/Experiment";
-import ExperimentActions from '../../actions/Experiment';
 import { History } from 'react-router';
 import reactMixin from 'react-mixin';
 
@@ -42,7 +41,10 @@ class Experiments extends React.Component {
 	}
 
 	_openCreationPage() {
+		const ExperimentCreateActions = require('../../actions/ExperimentCreate');
+
 		this.history.pushState(null, '/experiments/create');
+		ExperimentCreateActions.createForm();
 	}
 
 	_onChange() {

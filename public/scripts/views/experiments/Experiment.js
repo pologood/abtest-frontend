@@ -1,6 +1,8 @@
 import React from 'react';
 import Modal from 'simple-react-modal';
 import ExperimentStore from "../../stores/Experiment";
+import { History } from 'react-router';
+import reactMixin from 'react-mixin';
 
 class Experiment extends React.Component {
 
@@ -39,7 +41,7 @@ class Experiment extends React.Component {
 
 		return (
 			<div>
-				<Modal show={this.state.show} transitionSpeed={500} 
+				<Modal show={this.state.show} transitionSpeed={300} 
 						onClose={this.close.bind(this)}>
 					<div className="modal show">
 						<div className="modal-dialog">
@@ -60,7 +62,7 @@ class Experiment extends React.Component {
 									</div>
 									<div className="form-group">
 										<label htmlFor="recipient-name" className="control-label">Direcionamento</label>
-										<WhiteItems items={this.state.item}/>
+										<WhiteItems items={this.state.item} hideRemoveBtn={true}/>
 									</div>
 									<div className="form-group">
 										<label htmlFor="recipient-name" className="control-label">Variações</label>
@@ -72,7 +74,8 @@ class Experiment extends React.Component {
 								<div className="modal-footer">
 									<button type="button" className="btn btn-default" 
 											onClick={this.close.bind(this)}>Fechar</button>
-									<button type="button" className="btn btn-primary">Editar</button>
+									<button type="button" className="btn btn-primary"
+											onClick={this._openCreationPage.bind(this)}>Editar</button>
 								</div>
 							</div>
 						</div>
@@ -81,6 +84,15 @@ class Experiment extends React.Component {
 			</div>
 		);
 	}
+
+	_openCreationPage() {
+		const ExperimentCreateActions = require('../../actions/ExperimentCreate');
+
+		this.history.pushState(null, '/experiments/create/' + this.state.item.id);
+		ExperimentCreateActions.createForm(this.state.item.id);
+	}
 }
+
+reactMixin.onClass(Experiment, History);
 
 module.exports = Experiment;

@@ -4,20 +4,15 @@ import ExperimentCreateStore from "../../stores/ExperimentCreate";
 import ExperimentActions from "../../actions/Experiment";
 
 function getExperimentCreateState() {
-	return {
-		variations: ExperimentCreateStore.getVariations(),
-		whiteItemsUser: ExperimentCreateStore.getWhiteItemsUser(),
-		whiteItemsDomain: ExperimentCreateStore.getWhiteItemsDomain(),
-		whiteItemsGroup: ExperimentCreateStore.getWhiteItemsGroup()
-	} 
+	return ExperimentCreateStore.getFormItem();
 }
 
 class Create extends React.Component {
 
 	constructor(props) {
 		super(props);
-
 		this.state = getExperimentCreateState();
+		debugger;
 	}
 
 	componentDidMount() {
@@ -53,7 +48,7 @@ class Create extends React.Component {
 					<div className="form-group">
 						<h5>Porcentagem de tráfego para o experimento</h5>
 						<div className="form-inline">
-							<select className="form-control input-sm" ref="percentage" defaultValue="50">
+							<select className="form-control input-sm" ref="percentage" defaultValue={this.state.percentage}>
 								<option value="1">1%</option>
 								<option value="5">5%</option>
 								<option value="10">10%</option>
@@ -70,7 +65,7 @@ class Create extends React.Component {
 
 					<div className="form-group">
 						<h5>Hipótese</h5>
-						<textarea rows="4" cols="20" className="form-control input-sm txtarea-variation" ref="description">
+						<textarea rows="4" cols="10" className="form-control input-sm txtarea-variation" ref="description">
 						</textarea>
 					</div>
 
@@ -92,14 +87,14 @@ class Create extends React.Component {
 
 	_createExperiment(event) {
 		event.preventDefault();
-
+		debugger;
 		var name = this.refs.name.value,
 			description = this.refs.description.value,
 			percentage = this.refs.percentage.value,
 			enabled = true,
-			domains = null,
-			groups = null,
-			users = null,
+			domains = this.state.whiteItemsDomain.toString(),
+			groups = this.state.whiteItemsGroup.toString(),
+			users = this.state.whiteItemsUser.toString(),
 			variations = this.state.variations;
 
 		ExperimentActions.create(name, description, enabled, percentage, domains, groups, users, variations);

@@ -5,12 +5,23 @@ import ExperimentCreateConstants from '../constants/ExperimentCreate';
 
 const CHANGE_EVENT = 'changeExperimentCreate';
 
-var variations = [];
+var formItem = {};
 
-var whiteItems = [],
-	users = [],
-	groups = [],
-	domains = [];
+function createForm () {
+	
+		debugger;
+	formItem = {
+		percentage: 50,
+		variations: [],
+		users: [],
+		groups: [],
+		domains: []
+	}
+}
+
+function createUpdateForm (experiment) {
+	formItem = experiment;
+}
 
 function updateVariation(hash, name, enabled) {
 	var item = {
@@ -19,22 +30,22 @@ function updateVariation(hash, name, enabled) {
 		enabled : enabled
 	};
 
-	for (var i = 0; i < variations.length; i++)
-		if(variations[i].hash == item.hash)
-			return variations[i] = item;
+	for (var i = 0; i < formItem.variations.length; i++)
+		if(formItem.variations[i].hash == item.hash)
+			return formItem.variations[i] = item;
 }
 
 function createVariation() {
 	var item = {
 		hash: new Date().getTime()
 	};
-	variations.push(item);
+	formItem.variations.push(item);
 }
 
 function deleteVariation(hash) {
-	for (var i = 0; i < variations.length; i++)
-		if(variations[i].hash == hash)
-			return variations.splice(i, 1);
+	for (var i = 0; i < formItem.variations.length; i++)
+		if(formItem.variations[i].hash == hash)
+			return formItem.variations.splice(i, 1);
 }
 
 function createWhiteItem (name, type) {
@@ -67,8 +78,12 @@ function deleteWhiteItem (name, type) {
 
 const ExperimentCreate = assign({}, EventEmitter.prototype, {
 
+	getFormItem: function () {
+		return formItem;
+	},
+
 	getVariations: function() {
-	    return variations;
+		return variations;
 	},
 
 	getWhiteItemsUser: function() {
@@ -98,6 +113,20 @@ const ExperimentCreate = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
 	switch(action.actionType) {
+		case ExperimentCreateConstants.CREATEFORM:
+			if (action.id) {
+				const ExperimentStore = require('./Experiment');
+				ExperimentStore.getExperiment(action.id, function (experiment) {
+					debugger;
+					createUpdateForm(experiment);
+					ExperimentCreate.emitChange();
+				});
+			} else {
+				createForm();
+				ExperimentCreate.emitChange();	
+			}
+			break;
+
 		case ExperimentCreateConstants.UPDATEVARIATION:
 			updateVariation(action.hash, action.name, action.enabled);
 			ExperimentCreate.emitChange();

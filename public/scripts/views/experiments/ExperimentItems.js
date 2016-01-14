@@ -19,7 +19,8 @@ class ListItem extends React.Component {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
 				item = stateItems[i];
 				listItems.push(
-					<li className="list-group-item" onClick={this.openModal.bind(this, item.id)}>
+					<li className="list-group-item" key={item.id}
+						onClick={this.openModal.bind(this, item.id)}>
 						<h5>{i + 1} - {item.name}</h5>
 						<div className="btn-group pull-right">
 							<Switch className="toogle-experiment" size='mini' state={item.enabled} 

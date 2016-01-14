@@ -19,6 +19,7 @@ class Routes extends React.Component {
 				<Route path="/" component={Experiments}/>
 				<Route path="/experiments" component={Experiments}/>
 				<Route path="/experiments/create" component={ExperimentCreate}/>
+				<Route path="/experiments/create/:id" component={ExperimentCreate}/>
 				<Route path="*" component={NotFound}/>
 			</Router>
 		);

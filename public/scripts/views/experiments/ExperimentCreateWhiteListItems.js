@@ -30,6 +30,7 @@ class CreateWhiteListItems extends React.Component {
 		}
 
 		if (whiteItemsList) {
+			var removeBtn = null;
 			for (var i = 0; i < whiteItemsList.length; i++) {
 				var item = whiteItemsList[i];
 				if (item.type == "user") {
@@ -42,11 +43,14 @@ class CreateWhiteListItems extends React.Component {
 					buttonColor = "btn btn-info btn-xs";
 					icon = "glyphicon glyphicon-globe";
 				}
+				
+				if (!this.props.hideRemoveBtn)
+					removeBtn = <span className="glyphicon glyphicon-remove" onClick={this._deleteWhiteItem.bind(this, item)}></span>;
 
 				whiteItemsEls.push(
 					<button key={i} className={buttonColor} type="button">
 						<span className={icon}></span> {item.name} &nbsp;
-						<span className="glyphicon glyphicon-remove" onClick={this._deleteWhiteItem.bind(this, item)}></span>
+						{removeBtn}
 					</button>
 				)
 			}
