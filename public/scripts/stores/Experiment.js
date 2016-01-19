@@ -13,7 +13,9 @@ function enabling(featureId, enabled, callback) {
 }
 
 function createExperiment(experiment) {
-	ExperimentModel.save(experiment);
+	if (experiment.id)
+		ExperimentAjax.update(experiment);
+	new ExperimentModel().save(experiment);
 }
 
 const Experiment = assign({}, EventEmitter.prototype, {

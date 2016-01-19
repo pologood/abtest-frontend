@@ -11,7 +11,8 @@ const babelify = require('babelify'),
 	rename = require('gulp-rename'),
 	watchify = require('watchify'),
 	notify = require('gulp-notify'),
-	htmlreplace = require('gulp-html-replace');
+	htmlreplace = require('gulp-html-replace'),
+	historyApiFallback = require('connect-history-api-fallback');
 
 const browserSync = require('browser-sync'),
 	reload = browserSync.reload;
@@ -107,7 +108,10 @@ gulp.task('serve', function() {
 	
 	browserSync.init({
 		server: {
-			baseDir: paths.DIST
+			baseDir: paths.DIST,
+			middleware: [ historyApiFallback({
+				index: '/index.html'
+			}) ]
 		}
 	});
 

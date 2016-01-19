@@ -35,7 +35,7 @@ class Experiment extends React.Component {
 		if (variations)
 			variations.forEach(variation => {
 				variationsEls.push(
-					<li className="list-group-item">{variation.name}</li>
+					<li key={variation.id} className="list-group-item">{variation.name}</li>
 				);
 			});
 
@@ -86,10 +86,7 @@ class Experiment extends React.Component {
 	}
 
 	_openCreationPage() {
-		const ExperimentCreateActions = require('../../actions/ExperimentCreate');
-
 		this.history.pushState(null, '/experiments/create/' + this.state.item.id);
-		ExperimentCreateActions.createForm(this.state.item.id);
 	}
 }
 

@@ -11,12 +11,12 @@ class Variations extends React.Component {
 
 		const VariationItem = require('./VariationItem.js');
 
-		var variations = this.props.items;
+		var variations = this.props.items || [];
 		var variationsEls = [];
 
 		for (var i = 0, len = variations.length; i < len; i++) {
 			variationsEls.push(
-				<VariationItem index={i} item={variations[i]} key={variations[i].hash}/>
+				<VariationItem index={i} item={variations[i]} key={variations[i].id}/>
 			);
 		}
 

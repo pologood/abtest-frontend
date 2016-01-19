@@ -9,15 +9,11 @@ import underscore from 'underscore';
 import jQuery from 'jquery';
 import Modal from 'simple-react-modal';
 
-import app from './app';
-import Router from "./config/Router";
-import Index from "./views/Index";
-
 import ExperimentCreateStore from "./stores/ExperimentCreate";
 import ExperimentStore from "./stores/Experiment";
 
-Index.render();
+import app from './app';
+import Router from "./config/Router";
 
-var container = document.getElementById('page');
+var container = document.getElementById('app');
 ReactDOM.render(<Router />, container);	
-

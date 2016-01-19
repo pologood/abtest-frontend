@@ -41,10 +41,7 @@ class Experiments extends React.Component {
 	}
 
 	_openCreationPage() {
-		const ExperimentCreateActions = require('../../actions/ExperimentCreate');
-
 		this.history.pushState(null, '/experiments/create');
-		ExperimentCreateActions.createForm();
 	}
 
 	_onChange() {

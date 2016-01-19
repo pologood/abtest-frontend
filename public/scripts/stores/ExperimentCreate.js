@@ -7,9 +7,7 @@ const CHANGE_EVENT = 'changeExperimentCreate';
 
 var formItem = {};
 
-function createForm () {
-	
-		debugger;
+function createForm (callback) {
 	formItem = {
 		percentage: 50,
 		variations: [],
@@ -17,6 +15,7 @@ function createForm () {
 		groups: [],
 		domains: []
 	}
+	callback();
 }
 
 function createUpdateForm (experiment) {
@@ -51,13 +50,13 @@ function deleteVariation(hash) {
 function createWhiteItem (name, type) {
 	switch(type) {
 	    case "domain":
-	        domains.push(name);
+	        formItem.domains.push(name);
 	        break;
 	    case "group":
-	        groups.push(name);
+	        formItem.groups.push(name);
 	        break;
 	   	case "user":
-	        users.push(name);
+	        formItem.users.push(name);
 	        break;
 	}
 }
@@ -65,13 +64,13 @@ function createWhiteItem (name, type) {
 function deleteWhiteItem (name, type) {
 	switch(type) {
 	    case "domain":
-	        domains.splice(domains.indexOf(name),1);
+	        formItem.domains.splice(domains.indexOf(name),1);
 	        break;
 	    case "group":
-	    	groups.splice(groups.indexOf(name),1);       
+	    	formItem.groups.splice(groups.indexOf(name),1);       
 	        break;
 	   	case "user":
-	   		users.splice(users.indexOf(name),1);        
+	   		formItem.users.splice(users.indexOf(name),1);        
 	        break;
 	}
 }
@@ -117,13 +116,13 @@ AppDispatcher.register(function(action) {
 			if (action.id) {
 				const ExperimentStore = require('./Experiment');
 				ExperimentStore.getExperiment(action.id, function (experiment) {
-					debugger;
 					createUpdateForm(experiment);
 					ExperimentCreate.emitChange();
 				});
 			} else {
-				createForm();
-				ExperimentCreate.emitChange();	
+				createForm(function() {
+					ExperimentCreate.emitChange();	
+				});
 			}
 			break;
 

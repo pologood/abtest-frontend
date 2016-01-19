@@ -3,7 +3,7 @@ import app from "../../app";
 
 var Experiment = Backbone.Model.extend({
 	url: app.backendUrl + '/experiments',
-	idAttribute: '_id',
+	idAttribute: 'id',
 
 	enabling : function(status) {
 		this.save({enabled: status});
@@ -11,4 +11,4 @@ var Experiment = Backbone.Model.extend({
 
 });
 
-module.exports = new Experiment();
+module.exports = Experiment;

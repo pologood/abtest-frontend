@@ -12,21 +12,21 @@ class CreateWhiteListItems extends React.Component {
 		var whiteItems = this.props.items,
 			whiteItemsList = [],
 			whiteItemsEls = [],
-			whiteItemsUser = whiteItems.users || [],
-			whiteItemsDomain = whiteItems.domains || [],
-			whiteItemsGroup = whiteItems.groups || [];
+			user = whiteItems.users || [],
+			domains = whiteItems.domains || [],
+			groups = whiteItems.groups || [];
 
 		var buttonColor, icon;
 
 		if (whiteItems) {
-			for (var i = 0; i < whiteItemsUser.length; i++)
-				whiteItemsList.push({name:whiteItemsUser[i],type:"user"});
+			for (var i = 0; i < user.length; i++)
+				whiteItemsList.push({name:user[i],type:"user"});
 
-			for (var i = 0; i < whiteItemsDomain.length; i++)
-				whiteItemsList.push({name:whiteItemsDomain[i],type:"domain"});
+			for (var i = 0; i < domains.length; i++)
+				whiteItemsList.push({name:domains[i],type:"domain"});
 			
-			for (var i = 0; i < whiteItemsGroup.length; i++)
-				whiteItemsList.push({name:whiteItemsGroup[i],type:"group"});
+			for (var i = 0; i < groups.length; i++)
+				whiteItemsList.push({name:groups[i],type:"group"});
 		}
 
 		if (whiteItemsList) {

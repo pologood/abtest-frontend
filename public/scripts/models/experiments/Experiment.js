@@ -17,6 +17,16 @@ class Experiment {
 		return Ajax.call({
 			url: app.backendUrl + "/experiments/" + id,
 			contentType: "application/json",
+			success: callback,
+			async: "false"
+		});
+	}
+
+	update(data, callback) {
+		return Ajax.call({
+			method: "PUT",
+			url: app.backendUrl + "/experiments",
+			contentType: "application/json",
 			success: callback
 		});
 	}

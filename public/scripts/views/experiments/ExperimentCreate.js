@@ -12,10 +12,11 @@ class Create extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = getExperimentCreateState();
-		debugger;
 	}
 
 	componentDidMount() {
+		var id = this.props.routeParams.id;
+		ExperimentCreateActions.createForm(id);
 		ExperimentCreateStore.addChangeListener(this._onChange.bind(this));
 	}
 
@@ -26,11 +27,11 @@ class Create extends React.Component {
 	render() {
 		const Variations = require('./ExperimentVariations'),
 			WhiteList = require('./ExperimentCreateWhiteList');
-		
+		debugger;
 		var whiteItemsType = {
-			users : this.state.whiteItemsUser,
-			domains : this.state.whiteItemsDomain,
-			groups : this.state.whiteItemsGroup
+			users : this.state.users,
+			domains : this.state.domains,
+			groups : this.state.groups
 		}; 
 
 		return (
@@ -48,7 +49,7 @@ class Create extends React.Component {
 					<div className="form-group">
 						<h5>Porcentagem de tráfego para o experimento</h5>
 						<div className="form-inline">
-							<select className="form-control input-sm" ref="percentage" defaultValue={this.state.percentage}>
+							<select className="form-control input-sm" defaultValue={50} ref="percentage">
 								<option value="1">1%</option>
 								<option value="5">5%</option>
 								<option value="10">10%</option>
@@ -82,19 +83,23 @@ class Create extends React.Component {
 
 	_onChange() {
 		this.state = getExperimentCreateState();
+		if (!this.refs.name) return;
+		this.refs.name.value = this.state.name || "",
+		this.refs.description.value = this.state.description || "",
+		this.refs.percentage.value = this.state.percentage || 1,
 		this.setState(this.state);
 	}
 
 	_createExperiment(event) {
 		event.preventDefault();
-		debugger;
+
 		var name = this.refs.name.value,
 			description = this.refs.description.value,
 			percentage = this.refs.percentage.value,
 			enabled = true,
-			domains = this.state.whiteItemsDomain.toString(),
-			groups = this.state.whiteItemsGroup.toString(),
-			users = this.state.whiteItemsUser.toString(),
+			domains = this.state.domains.toString(),
+			groups = this.state.groups.toString(),
+			users = this.state.users.toString(),
 			variations = this.state.variations;
 
 		ExperimentActions.create(name, description, enabled, percentage, domains, groups, users, variations);
