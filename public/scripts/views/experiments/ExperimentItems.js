@@ -6,46 +6,46 @@ class ListItem extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {experiments: this.props.experiments};
 	}
 
 	render() {
 		const Experiment = require('./Experiment');
-		var listItems = [],
-			stateItems = this.props.experiments,
-			item = null;
-			
-		if (stateItems) {
-			for (var i = 0, len = stateItems.length; i < len; i++) {
-				item = stateItems[i];
-				listItems.push(
-					<a href="#" className="list-group-item" key={item.id}
-						onClick={this.openModal.bind(this, item.id)}>
-						<h5>{i + 1} - {item.name}</h5>
-						<div className="btn-group pull-right">
-							<Switch className="toogle-experiment" size='mini' state={item.enabled} 
-									onChange={this.toggleEnable.bind(this, item)}/>
-						</div>
-					</a>
-				);
-			}
-		}
+		var me = this,
+			experimentsEls = [],
+			experiments = this.props.experiments || [];
+
+		experiments.forEach((experiment, index) => {
+			experimentsEls.push(me._formatItem(experiment, index));
+		});
 
 		return (
 			<div>
 				<div className="list-group">
-					{listItems}
+					{experimentsEls}
 				</div>
 				<Experiment ref="experimentModal"/>
 			</div>
 		);
 	}
 
-	openModal(id) {
+	_formatItem(item, index) {
+		return (
+			<a href="#" className="list-group-item" key={item.id}
+				onClick={this._openModal.bind(this, item.id)}>
+				<h5>{index + 1} - {item.name}</h5>
+				<div className="btn-group pull-right">
+					<Switch className="toogle-experiment" size='mini' state={item.enabled} 
+							onChange={this._toggleEnable.bind(this, item)}/>
+				</div>
+			</a>
+		);
+	}
+
+	_openModal(id) {
 		this.refs.experimentModal.show(id);
 	}
 
-	toggleEnable(item) {
+	_toggleEnable(item) {
 		ExperimentActions.toggleEnable(item.id, !item.enabled);
 	}
 }
