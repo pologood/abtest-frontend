@@ -25,7 +25,8 @@ const paths = {
 	TEST: './test'};
 
 paths.SCRIPTS = [paths.SRC + '/scripts/**/*.js'];
-paths.STYLES = [paths.SRC + '/styles/**/*.scss'];
+paths.STYLES = [paths.SRC + '/styles/**/*'];
+paths.SASS = [paths.SRC + '/styles/**/*.scss'];
 paths.TESTS = [paths.TEST + '/**/*.js'];
 
 
@@ -102,7 +103,11 @@ gulp.task('style', function () {
 	gulp.src(paths.SRC + '/fonts/**.*')
 			.pipe(gulp.dest(paths.DIST + '/fonts'));
 
-	return gulp.src(paths.STYLES)
+	gulp.src(paths.STYLES)
+			.pipe(gulp.dest(paths.DIST))
+			.pipe(reload({stream:true}));
+
+	return gulp.src(paths.SASS)
 			.pipe(sass().on('error', sass.logError))
 			.pipe(gulp.dest(paths.DIST))
 			.pipe(reload({stream:true}));
