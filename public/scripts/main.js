@@ -1,4 +1,4 @@
-import Flux from 'Flux';
+import Flux from 'flux';
 import assign from 'object-assign';
 import EventEmitter from 'events';
 import React from 'react';
