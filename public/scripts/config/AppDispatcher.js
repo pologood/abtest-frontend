@@ -1,3 +1,3 @@
-const Dispatcher = require('Flux').Dispatcher;
+const Dispatcher = require('flux').Dispatcher;
 
 module.exports = new Dispatcher();

@@ -33,7 +33,7 @@ class Form extends React.Component {
 	render() {
 		const Variations = require('./ExperimentVariations'),
 			WhiteList = require('./ExperimentCreateWhiteList');
-
+			
 		var whiteItemsType = {
 			users : this.state.users,
 			domains : this.state.domains,
@@ -118,9 +118,9 @@ class Form extends React.Component {
 			description = this.refs.description.value,
 			percentage = this.refs.percentage.value,
 			enabled = true,
-			domains = this.state.domains.toString(),
-			groups = this.state.groups.toString(),
-			users = this.state.users.toString(),
+			domains = this.state.domains.toString().replace(",", ";"),
+			groups = this.state.groups.toString().replace(",", ";"),
+			users = this.state.users.toString().replace(",", ";"),
 			variations = this.state.variations;
 
 		ExperimentFormActions.create(name, description, enabled, percentage, domains, groups, users, variations);
