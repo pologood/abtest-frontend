@@ -23,7 +23,7 @@ EXPOSE 80 443
 
 # Uploads the assets to the container
 ADD ./public/ /var/www
-ADD ./nginx/nginx.conf /etc/nginx
+ADD ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Kicking in
 CMD ["nginx", "-g", "daemon off;"]
