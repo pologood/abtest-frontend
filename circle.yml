@@ -1,4 +1,6 @@
 machine:  
+  services:
+    - docker
   environment:
     NODE_ENV: test
   node:
