@@ -14,14 +14,14 @@ class Header extends React.Component {
 		return (
 			<nav className="navbar navbar-default">
 				<div className="navbar-header">
-						<a className="navbar-brand" href="#">ABTest</a>
+					<img src="/images/abtest-horizontal.svg" onClick={this._openExperiments.bind(this)}
+							className="navbar-brand"/>
 				</div>
 				<div className="nav navbar-nav">
-					<li><a onClick={this._openExperiments.bind(this)}>Experimentos</a></li>
+					<li><a href="#" onClick={this._openExperiments.bind(this)}>Experimentos</a></li>
 				</div>
 			</nav>
 		);
-		return <Navigationbar/>;
 	}
 
 	_openExperiments() {

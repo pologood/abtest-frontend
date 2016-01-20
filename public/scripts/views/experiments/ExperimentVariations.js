@@ -1,5 +1,5 @@
 import React from 'react';
-import ExperimentCreateActions from "../../actions/ExperimentCreate";
+import ExperimentFormActions from "../../actions/ExperimentForm";
 
 class Variations extends React.Component {
 
@@ -8,15 +8,14 @@ class Variations extends React.Component {
 	}
 
 	render() {
-
 		const VariationItem = require('./VariationItem.js');
 
-		var variations = this.props.items;
+		var variations = this.props.items || [];
 		var variationsEls = [];
 
 		for (var i = 0, len = variations.length; i < len; i++) {
 			variationsEls.push(
-				<VariationItem index={i} item={variations[i]} key={variations[i].hash}/>
+				<VariationItem index={i} item={variations[i]} key={variations[i].id}/>
 			);
 		}
 
@@ -37,7 +36,7 @@ class Variations extends React.Component {
 
 	_addVariation(event) {
 		event.preventDefault();
-		ExperimentCreateActions.createVariation();
+		ExperimentFormActions.createVariation();
 	}
 
 }

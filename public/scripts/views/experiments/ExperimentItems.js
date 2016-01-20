@@ -10,6 +10,7 @@ class ListItem extends React.Component {
 	}
 
 	render() {
+		const Experiment = require('./Experiment');
 		var listItems = [],
 			stateItems = this.props.experiments,
 			item = null;
@@ -18,23 +19,30 @@ class ListItem extends React.Component {
 			for (var i = 0, len = stateItems.length; i < len; i++) {
 				item = stateItems[i];
 				listItems.push(
-					<li className="list-group-item">
+					<a href="#" className="list-group-item" key={item.id}
+						onClick={this.openModal.bind(this, item.id)}>
 						<h5>{i + 1} - {item.name}</h5>
 						<div className="btn-group pull-right">
-							<Switch className="toogle-experiment" size='mini' state={item.enabled} onChange={this.toggleEnable.bind(this, item)}/>
+							<Switch className="toogle-experiment" size='mini' state={item.enabled} 
+									onChange={this.toggleEnable.bind(this, item)}/>
 						</div>
-					</li>
+					</a>
 				);
 			}
 		}
 
 		return (
 			<div>
-				<ul className="list-group">
+				<div className="list-group">
 					{listItems}
-				</ul>
+				</div>
+				<Experiment ref="experimentModal"/>
 			</div>
 		);
+	}
+
+	openModal(id) {
+		this.refs.experimentModal.show(id);
 	}
 
 	toggleEnable(item) {

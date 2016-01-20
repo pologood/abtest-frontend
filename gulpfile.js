@@ -11,7 +11,8 @@ const babelify = require('babelify'),
 	rename = require('gulp-rename'),
 	watchify = require('watchify'),
 	notify = require('gulp-notify'),
-	htmlreplace = require('gulp-html-replace');
+	htmlreplace = require('gulp-html-replace'),
+	historyApiFallback = require('connect-history-api-fallback');
 
 const browserSync = require('browser-sync'),
 	reload = browserSync.reload;
@@ -97,23 +98,36 @@ gulp.task('test', function () {
 });
 
 gulp.task('style', function () {
+
+	gulp.src(paths.SRC + '/fonts/**.*')
+			.pipe(gulp.dest(paths.DIST + '/fonts'));
+
 	return gulp.src(paths.STYLES)
 			.pipe(sass().on('error', sass.logError))
 			.pipe(gulp.dest(paths.DIST))
 			.pipe(reload({stream:true}));
 });
 
+gulp.task('images', function() {
+	gulp.src(paths.SRC + '/images/**.*')
+		.pipe(gulp.dest(paths.DIST + '/images'));
+});
+
 gulp.task('serve', function() {
 	
 	browserSync.init({
 		server: {
-			baseDir: paths.DIST
+			baseDir: paths.DIST,
+			middleware: [ historyApiFallback({
+				index: '/index.html'
+			}) ]
 		}
 	});
 
 	gulp.watch(paths.SCRIPTS, ['scripts']);
 	gulp.watch(paths.STYLES, ['style']);
+	gulp.watch(paths.SRC + '/images/**.*', ['images']);
 });
 
-gulp.task('default', ['scripts', 'style']);
+gulp.task('default', ['scripts', 'style', 'images']);
 
