@@ -13,17 +13,17 @@ dependencies:
 
 test:  
   override:
-    - gulp
+    - npm run build
 
 deployment:
-  pull_requests:
-    branch: /release.*/
-    commands:
-      - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
-      - docker build -t "fedevegili/abtest-frontend:$CIRCLE_BUILD_NUM" .
   production:
     branch: master
     commands:
       - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
       - docker build -t "fedevegili/abtest-frontend:$CIRCLE_BUILD_NUM" .
       - docker push "fedevegili/abtest-frontend:$CIRCLE_BUILD_NUM"
+  pull_requests:
+    branch: /.*/
+    commands:
+      - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      - docker build -t "fedevegili/abtest-frontend:$CIRCLE_BUILD_NUM" .
