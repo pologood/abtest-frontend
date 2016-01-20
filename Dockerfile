@@ -11,26 +11,19 @@ RUN yum -y install nginx unzip
 # Clean up YUM when done.
 RUN yum clean all
 
-# Downloads nginx minimal config
-RUN cd /tmp && \
-  curl -O https://raw.githubusercontent.com/fedevegili/abtest-frontend/master/nginx/nginx.conf
-
+# Deletes nginx.conf that will be overriden by the project nginx conf
 RUN rm -rf /etc/nginx/nginx.conf
-RUN mv /tmp/nginx.conf /etc/nginx
 
 VOLUME ["/etc/nginx"]
 VOLUME ["/var/www"]
 
 EXPOSE 80 443
 
+### PROJECT UPLOAD
 
-### PROJECT DOWNLOAD
-
-# Downloads abtest-frontend master
-RUN cd /tmp && curl -O https://codeload.github.com/softexpertsa/abtest-frontend/zip/master
-
-# Unzip the project
-RUN unzip /tmp/master -d /var/www
+# Uploads the assets to the container
+ADD ./public/ /var/www
+ADD ./nginx/nginx.conf /etc/nginx
 
 # Kicking in
 CMD ["nginx", "-g", "daemon off;"]
