@@ -74,8 +74,6 @@ class Experiment extends React.Component {
 								<div className="modal-footer">
 									<button type="button" className="btn btn-default" 
 											onClick={this.close.bind(this)}>Fechar</button>
-									<button type="button" className="btn btn-primary"
-											onClick={this._openCreationPage.bind(this)}>Editar</button>
 								</div>
 							</div>
 						</div>
@@ -86,7 +84,7 @@ class Experiment extends React.Component {
 	}
 
 	_openCreationPage() {
-		this.history.pushState(null, '/experiments/create/' + this.state.item.id);
+		this.history.pushState(null, '/experiments/form/' + this.state.item.id);
 	}
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import ExperimentCreateActions from "../../actions/ExperimentCreate";
+import ExperimentFormActions from "../../actions/ExperimentForm";
 
 class VariationItem extends React.Component {
 
@@ -33,11 +33,11 @@ class VariationItem extends React.Component {
 		var hash = this.props.item.hash,
 			name = this.refs.name.value;
 
-		ExperimentCreateActions.updateVariation(hash, name);
+		ExperimentFormActions.updateVariation(hash, name);
 	}
 
 	_removeVariation(hash) {
-		ExperimentCreateActions.deleteVariation(hash);
+		ExperimentFormActions.deleteVariation(hash);
 	}
 }
 

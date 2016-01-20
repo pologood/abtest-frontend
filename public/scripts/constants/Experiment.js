@@ -1,4 +1,3 @@
 module.exports = {
-	ENABLING: "ENABLING",
-	CREATE: "CREATE"
+	ENABLING: "ENABLING"
 };

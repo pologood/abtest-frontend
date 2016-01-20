@@ -30,6 +30,15 @@ class Experiment {
 			success: callback
 		});
 	}
+
+	create(data) {
+		return Ajax.call({
+			method: "POST",
+			url: app.backendUrl + "/experiments",
+			data: data,
+			contentType: "application/json"
+		});
+	}
 }
 
 module.exports = new Experiment();

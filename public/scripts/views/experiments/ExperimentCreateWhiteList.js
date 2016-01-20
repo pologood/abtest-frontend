@@ -1,5 +1,5 @@
 import React from 'react';
-import ExperimentCreateActions from "../../actions/ExperimentCreate";
+import ExperimentFormActions from "../../actions/ExperimentForm";
 
 class CreateWhiteList extends React.Component {
 
@@ -41,7 +41,7 @@ class CreateWhiteList extends React.Component {
 				type = this.refs.type.value;
 
 			event.preventDefault();
-			ExperimentCreateActions.createWhiteItem(name, type);
+			ExperimentFormActions.createWhiteItem(name, type);
 		}
 	}
 }

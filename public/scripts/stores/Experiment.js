@@ -12,12 +12,6 @@ function enabling(featureId, enabled, callback) {
 	ExperimentAjax.enabling(featureId, enabled, callback);
 }
 
-function createExperiment(experiment) {
-	if (experiment.id)
-		ExperimentAjax.update(experiment);
-	new ExperimentModel().save(experiment);
-}
-
 const Experiment = assign({}, EventEmitter.prototype, {
 
 	getExperiments: function() {
@@ -48,11 +42,6 @@ AppDispatcher.register(function(action) {
 			enabling(action.experimentId, action.enabled, function(){
 				Experiment.emitChange();
 			});
-			break;
-
-		case ExperimentConstants.CREATE:
-			createExperiment(action.experiment);
-			Experiment.emitChange();
 			break;
 
 		default:

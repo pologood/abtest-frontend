@@ -41,7 +41,7 @@ class Experiments extends React.Component {
 	}
 
 	_openCreationPage() {
-		this.history.pushState(null, '/experiments/create');
+		this.history.pushState(null, '/experiments/form');
 	}
 
 	_onChange() {

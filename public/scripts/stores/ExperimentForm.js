@@ -1,9 +1,10 @@
 import AppDispatcher from '../config/AppDispatcher';
 import EventEmitter from 'events';
 import assign from 'object-assign';
-import ExperimentCreateConstants from '../constants/ExperimentCreate';
+import ExperimentFormConstants from '../constants/ExperimentForm';
+import LoadingConstants from '../constants/Loading';
 
-const CHANGE_EVENT = 'changeExperimentCreate';
+const CHANGE_EVENT = 'changeExperimentForm';
 
 var formItem = {};
 
@@ -64,18 +65,18 @@ function createWhiteItem (name, type) {
 function deleteWhiteItem (name, type) {
 	switch(type) {
 	    case "domain":
-	        formItem.domains.splice(domains.indexOf(name),1);
+	        formItem.domains.splice(formItem.domains.indexOf(name),1);
 	        break;
 	    case "group":
-	    	formItem.groups.splice(groups.indexOf(name),1);       
+	    	formItem.groups.splice(formItem.groups.indexOf(name),1);       
 	        break;
 	   	case "user":
-	   		formItem.users.splice(users.indexOf(name),1);        
+	   		formItem.users.splice(formItem.users.indexOf(name),1);        
 	        break;
 	}
 }
 
-const ExperimentCreate = assign({}, EventEmitter.prototype, {
+const ExperimentForm = assign({}, EventEmitter.prototype, {
 
 	getFormItem: function () {
 		return formItem;
@@ -112,47 +113,62 @@ const ExperimentCreate = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(action) {
 	switch(action.actionType) {
-		case ExperimentCreateConstants.CREATEFORM:
+		case ExperimentFormConstants.CREATEFORM:
 			if (action.id) {
 				const ExperimentStore = require('./Experiment');
 				ExperimentStore.getExperiment(action.id, function (experiment) {
 					createUpdateForm(experiment);
-					ExperimentCreate.emitChange();
+					ExperimentForm.emitChange();
 				});
 			} else {
 				createForm(function() {
-					ExperimentCreate.emitChange();	
+					ExperimentForm.emitChange();	
 				});
 			}
 			break;
 
-		case ExperimentCreateConstants.UPDATEVARIATION:
+		case ExperimentFormConstants.UPDATEVARIATION:
 			updateVariation(action.hash, action.name, action.enabled);
-			ExperimentCreate.emitChange();
+			ExperimentForm.emitChange();
 			break;
 
-		case ExperimentCreateConstants.CREATEVARIATION:
+		case ExperimentFormConstants.CREATEVARIATION:
 			createVariation();
-			ExperimentCreate.emitChange();
+			ExperimentForm.emitChange();
 			break;
 
-		case ExperimentCreateConstants.DELETEVARIATION:
+		case ExperimentFormConstants.DELETEVARIATION:
 			deleteVariation(action.hash);
-			ExperimentCreate.emitChange();
+			ExperimentForm.emitChange();
 			break;
 
-		case ExperimentCreateConstants.CREATEWHITEITEM:
+		case ExperimentFormConstants.CREATEWHITEITEM:
 			createWhiteItem(action.name, action.type);
-			ExperimentCreate.emitChange();
+			ExperimentForm.emitChange();
 			break;
 
-		case ExperimentCreateConstants.DELETEWHITEITEM:
+		case ExperimentFormConstants.DELETEWHITEITEM:
 			deleteWhiteItem(action.name, action.type);
-			ExperimentCreate.emitChange();
+			ExperimentForm.emitChange();
 			break;
 
+		case ExperimentFormConstants.LOADINGCREATE:
+			formItem.creationState = LoadingConstants.LOADING;
+			ExperimentForm.emitChange();
+			break;
+
+		case ExperimentFormConstants.LOADEDCREATE:
+			formItem.creationState = LoadingConstants.LOADED;
+			ExperimentForm.emitChange();
+			break;
+
+		case ExperimentFormConstants.ERRORCREATE:
+			formItem.creationState = LoadingConstants.ERROR;
+			ExperimentForm.emitChange();
+			break;
+			
 		default:
 	}
 });
 
-module.exports = ExperimentCreate;
+module.exports = ExperimentForm;
