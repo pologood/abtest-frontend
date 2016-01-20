@@ -1,16 +1,25 @@
-var Index = function () {
-	var indexObj = {
-		render: function() {
-			var React = require('react');
-			var ReactDOM = require('react-dom');
-			var Header = require('./Header.js');
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-			var container = document.getElementById('header');
+class Index extends React.Component {
 
-			ReactDOM.render(<Header></Header>, container);			
-		}	
+	constructor(props) {
+		super(props);
 	}
-	return indexObj;
-}();
+
+	render () {
+		var Header = require('./Header');
+		return (
+			<div>
+				<Header/>
+				<div id="page">
+					{this.props.children}
+				</div>
+				<div className="navbar navbar-bottom footer">
+				</div>
+			</div>
+		);
+	}
+};
 
 module.exports = Index;

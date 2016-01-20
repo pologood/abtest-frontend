@@ -1,5 +1,5 @@
 import React from 'react';
-import ExperimentCreateActions from "../../actions/ExperimentCreate";
+import ExperimentFormActions from "../../actions/ExperimentForm";
 
 class VariationItem extends React.Component {
 
@@ -9,8 +9,9 @@ class VariationItem extends React.Component {
 
 	render() {
 		var buttonClass = "glyphicon glyphicon-trash variation-icon-remove";
-		
-		if (!this.props.item.enabled)
+
+		var name = this.props.item.name;
+		if (!name || !name.trim())
 			buttonClass += " disable-variations-btn-remove";
 
 		return (
@@ -30,14 +31,13 @@ class VariationItem extends React.Component {
 		event.preventDefault();
 
 		var hash = this.props.item.hash,
-			name = this.refs.name.value,
-			enabled = (name && name.trim());
+			name = this.refs.name.value;
 
-		ExperimentCreateActions.updateVariation(hash, name, enabled);
+		ExperimentFormActions.updateVariation(hash, name);
 	}
 
 	_removeVariation(hash) {
-		ExperimentCreateActions.deleteVariation(hash);
+		ExperimentFormActions.deleteVariation(hash);
 	}
 }
 

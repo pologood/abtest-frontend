@@ -1,5 +1,5 @@
 import React from 'react';
-import ExperimentCreateActions from "../../actions/ExperimentCreate";
+import ExperimentFormActions from "../../actions/ExperimentForm";
 
 class CreateWhiteList extends React.Component {
 
@@ -30,7 +30,7 @@ class CreateWhiteList extends React.Component {
 					<h5><small>Altere o direcionamento para adicionar <strong>domínio, usuário e host</strong></small></h5>
 					<br/>
 				</div>
-				<WhiteItems items={this.props.items}/>
+				<WhiteItems items={this.props.items} hideRemoveBtn={this.props.hideRemoveBtn}/>
 			</div>
 		);
 	}
@@ -41,7 +41,7 @@ class CreateWhiteList extends React.Component {
 				type = this.refs.type.value;
 
 			event.preventDefault();
-			ExperimentCreateActions.createWhiteItem(name, type);
+			ExperimentFormActions.createWhiteItem(name, type);
 		}
 	}
 }
