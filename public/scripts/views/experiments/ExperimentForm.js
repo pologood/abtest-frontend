@@ -19,21 +19,21 @@ class Form extends React.Component {
 	}
 
 	componentDidMount() {
-		debugger;
+		this.onChangeBinded = this._onChange.bind(this);
+		ExperimentFormStore.addChangeListener(this.onChangeBinded);
+
 		var id = this.props.routeParams.id;
 		ExperimentFormActions.createForm(id);
-
-		ExperimentFormStore.addChangeListener(this._onChange.bind(this));
 	}
 
 	componentWillUnmount() {
-		ExperimentFormStore.removeChangeListener(this._onChange.bind(this));
+		ExperimentFormStore.removeChangeListener(this.onChangeBinded);
 	}
 
 	render() {
 		const Variations = require('./ExperimentVariations'),
 			WhiteList = require('./ExperimentCreateWhiteList');
-		debugger;
+
 		var whiteItemsType = {
 			users : this.state.users,
 			domains : this.state.domains,
@@ -101,15 +101,10 @@ class Form extends React.Component {
 			return this._openExperiments();
 
 		this.setState(this.state);
-
-//		if (!this.refs.name) return;
-//		this.refs.name.value = this.state.name || "";
-//		this.refs.description.value = this.state.description || "";
-//		this.refs.percentage.value = this.state.percentage || 1;
 	}
 
 	_isCreated() {
-		return this.state.creationState == LoadingConstants.LOADED
+		return this.state.creationState == LoadingConstants.LOADED;
 	}
 
 	_openExperiments() {

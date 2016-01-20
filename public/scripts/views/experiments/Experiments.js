@@ -17,11 +17,12 @@ class Experiments extends React.Component {
 	}
 
 	componentDidMount() {
-		ExperimentStore.addChangeListener(this._onChange.bind(this));
+		this.onChangeBinded = this._onChange.bind(this);
+		ExperimentStore.addChangeListener(this.onChangeBinded);
 	}
 
 	componentWillUnmount() {
-		ExperimentStore.removeChangeListener(this._onChange.bind(this));
+		ExperimentStore.removeChangeListener(this.onChangeBinded);
 	}
 
 	render() {
