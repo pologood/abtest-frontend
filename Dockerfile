@@ -22,7 +22,7 @@ EXPOSE 80 443
 ### PROJECT UPLOAD
 
 # Uploads the assets to the container
-ADD ./public/ /var/www
+ADD ./public/build /var/www
 ADD ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Kicking in

@@ -4,10 +4,10 @@
   "description": "ABTest-frontend for Softexpert ABTest project",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "set NODE_ENV=dev&&node ./node_modules/gulp/bin/gulp.js serve",
-    "build": "set NODE_ENV=prod&&node ./node_modules/gulp/bin/gulp.js",
-    "build-dev": "set NODE_ENV=dev&&node ./node_modules/gulp/bin/gulp.js",
-    "test": "set NODE_ENV=test&&node ./node_modules/gulp/bin/gulp.js test"
+    "start": "export NODE_ENV=dev&&node ./node_modules/gulp/bin/gulp.js serve",
+    "build": "export NODE_ENV=prod&&node ./node_modules/gulp/bin/gulp.js",
+    "build-dev": "export NODE_ENV=dev&&node ./node_modules/gulp/bin/gulp.js",
+    "test": "export NODE_ENV=test&&node ./node_modules/gulp/bin/gulp.js test"
   },
   "dependencies": {
     "ajax-abstraction": "*",
