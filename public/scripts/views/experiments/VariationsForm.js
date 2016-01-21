@@ -8,16 +8,12 @@ class Variations extends React.Component {
 	}
 
 	render() {
-		const VariationItem = require('./VariationItem.js');
+		const VariationItemForm = require('./VariationItemForm.js');
+		var variations = this.props.items || [],
+			variationsEls = [];
 
-		var variations = this.props.items || [];
-		var variationsEls = [];
-
-		for (var i = 0, len = variations.length; i < len; i++) {
-			variationsEls.push(
-				<VariationItem index={i} item={variations[i]} key={variations[i].id}/>
-			);
-		}
+		for(let variation of variations)
+			variationsEls.push(<VariationItemForm item={variation} key={variation.id}/>);
 
 		return (
 			<div>

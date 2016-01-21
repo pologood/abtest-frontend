@@ -8,7 +8,7 @@ const CHANGE_EVENT = 'changeExperimentForm';
 
 var formItem = {};
 
-function createForm (callback) {
+function createForm () {
 	formItem = {
 		percentage: 50,
 		variations: [],
@@ -16,23 +16,22 @@ function createForm (callback) {
 		groups: [],
 		domains: []
 	}
-	callback();
 }
 
 function createUpdateForm (experiment) {
 	formItem = experiment;
 }
 
-function updateVariation(hash, name, enabled) {
+function updateVariation(hash, name) {
 	var item = {
 		hash : hash,
-		name : name,
-		enabled : enabled
+		name : name
 	};
 
-	for (var i = 0; i < formItem.variations.length; i++)
-		if(formItem.variations[i].hash == item.hash)
-			return formItem.variations[i] = item;
+	formItem.variations.some((variation, index) => {
+		if(variation.hash == item.hash)
+			return formItem.variations[index] = item;
+	});
 }
 
 function createVariation() {
@@ -43,36 +42,30 @@ function createVariation() {
 }
 
 function deleteVariation(hash) {
-	for (var i = 0; i < formItem.variations.length; i++)
-		if(formItem.variations[i].hash == hash)
-			return formItem.variations.splice(i, 1);
+	formItem.variations.some((variation, index) => {
+		if(variation.hash == hash)
+			return formItem.variations.splice(index, 1);
+	});
 }
 
 function createWhiteItem (name, type) {
-	switch(type) {
-	    case "domain":
-	        formItem.domains.push(name);
-	        break;
-	    case "group":
-	        formItem.groups.push(name);
-	        break;
-	   	case "user":
-	        formItem.users.push(name);
-	        break;
-	}
+	var list = getWhiteListByType(type);
+	list.push(name);
 }
 
 function deleteWhiteItem (name, type) {
+	var list = getWhiteListByType(type);
+	list.splice(list.indexOf(name), 1)
+}
+
+function getWhiteListByType (type) {
 	switch(type) {
 	    case "domain":
-	        formItem.domains.splice(formItem.domains.indexOf(name),1);
-	        break;
+	        return formItem.domains;
 	    case "group":
-	    	formItem.groups.splice(formItem.groups.indexOf(name),1);       
-	        break;
+	    	return formItem.groups;       
 	   	case "user":
-	   		formItem.users.splice(formItem.users.indexOf(name),1);        
-	        break;
+	   		return formItem.users;
 	}
 }
 
@@ -80,22 +73,6 @@ const ExperimentForm = assign({}, EventEmitter.prototype, {
 
 	getFormItem: function () {
 		return formItem;
-	},
-
-	getVariations: function() {
-		return variations;
-	},
-
-	getWhiteItemsUser: function() {
-	    return users;
-	},
-
-	getWhiteItemsDomain: function() {
-	    return domains;
-	},
-
-	getWhiteItemsGroup: function() {
-	    return groups;
 	},
 
 	emitChange: function() {
@@ -114,21 +91,12 @@ const ExperimentForm = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action) {
 	switch(action.actionType) {
 		case ExperimentFormConstants.CREATEFORM:
-			if (action.id) {
-				const ExperimentStore = require('./Experiment');
-				ExperimentStore.getExperiment(action.id, function (experiment) {
-					createUpdateForm(experiment);
-					ExperimentForm.emitChange();
-				});
-			} else {
-				createForm(function() {
-					ExperimentForm.emitChange();	
-				});
-			}
+			createForm()
+			ExperimentForm.emitChange();
 			break;
 
 		case ExperimentFormConstants.UPDATEVARIATION:
-			updateVariation(action.hash, action.name, action.enabled);
+			updateVariation(action.hash, action.name);
 			ExperimentForm.emitChange();
 			break;
 

@@ -23,17 +23,15 @@ function createExperiment(experiment) {
 class ExperimentForm {
 	createForm (id) {
 		AppDispatcher.dispatch({
-			actionType: ExperimentFormConstants.CREATEFORM,
-			id : id
+			actionType: ExperimentFormConstants.CREATEFORM
 		});
 	}
 
-	updateVariation (hash, name, enabled) {
+	updateVariation (hash, name) {
 		AppDispatcher.dispatch({
 			actionType: ExperimentFormConstants.UPDATEVARIATION,
 			hash : hash,
-			name : name,
-			enabled: enabled
+			name : name
 		});
 	}
 

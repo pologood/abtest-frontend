@@ -6,7 +6,7 @@ import { createHistory } from 'history';
 import Index from "../views/Index";
 import NotFound from "../views/NotFound";
 import Experiments from "../views/experiments/Experiments";
-import ExperimentForm from "../views/experiments/ExperimentForm";
+import ExperimentForm from "../views/experiments/Form";
 
 class Routes extends React.Component {
 
