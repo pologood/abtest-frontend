@@ -10,12 +10,11 @@ class ListItem extends React.Component {
 
 	render() {
 		const Experiment = require('./Experiment');
-		var me = this,
-			experimentsEls = [],
+		var experimentsEls = [],
 			experiments = this.props.experiments || [];
 
 		experiments.forEach((experiment, index) => {
-			experimentsEls.push(me._formatItem(experiment, index));
+			experimentsEls.push(this._getExperimentEl(experiment, index));
 		});
 
 		return (
@@ -28,7 +27,7 @@ class ListItem extends React.Component {
 		);
 	}
 
-	_formatItem(item, index) {
+	_getExperimentEl(item, index) {
 		return (
 			<a href="#" className="list-group-item" key={item.id}
 				onClick={this._openModal.bind(this, item.id)}>

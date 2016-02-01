@@ -8,7 +8,7 @@ class CreateWhiteList extends React.Component {
 	}
 
 	render() {
-		const WhiteItems = require('./ExperimentCreateWhiteListItems');
+		const WhiteList = require('./WhiteList');
 
 		return (
 			<div className="form-group">
@@ -30,7 +30,7 @@ class CreateWhiteList extends React.Component {
 					<h5><small>Altere o direcionamento para adicionar <strong>domínio, usuário e host</strong></small></h5>
 					<br/>
 				</div>
-				<WhiteItems items={this.props.items} hideRemoveBtn={this.props.hideRemoveBtn}/>
+				<WhiteList items={this.props.items} hideRemoveBtn={this.props.hideRemoveBtn}/>
 			</div>
 		);
 	}

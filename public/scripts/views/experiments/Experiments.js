@@ -26,7 +26,7 @@ class Experiments extends React.Component {
 	}
 
 	render() {
-		const ListItems = require('./ExperimentItems.js');
+		const Items = require('./Items.js');
 
 		return (
 			<div className="container">
@@ -36,7 +36,7 @@ class Experiments extends React.Component {
 						Cadastrar experimento
 					</button>
 				</div>
-				<ListItems experiments={this.state.experiments}/>			
+				<Items experiments={this.state.experiments}/>			
 			</div>
 		);
 	}

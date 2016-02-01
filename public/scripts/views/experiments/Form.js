@@ -22,8 +22,7 @@ class Form extends React.Component {
 		this.onChangeBinded = this._onChange.bind(this);
 		ExperimentFormStore.addChangeListener(this.onChangeBinded);
 
-		var id = this.props.routeParams.id;
-		ExperimentFormActions.createForm(id);
+		ExperimentFormActions.createForm();
 	}
 
 	componentWillUnmount() {
@@ -31,8 +30,8 @@ class Form extends React.Component {
 	}
 
 	render() {
-		const Variations = require('./ExperimentVariations'),
-			WhiteList = require('./ExperimentCreateWhiteList');
+		const VariationsForm = require('./VariationsForm'),
+			WhiteList = require('./WhiteListForm');
 			
 		var whiteItemsType = {
 			users : this.state.users,
@@ -82,7 +81,7 @@ class Form extends React.Component {
 							</textarea>
 						</div>
 
-						<Variations items={this.state.variations}/>
+						<VariationsForm items={this.state.variations}/>
 
 						<div className="btn-toolbar">
 							<button className="btn btn-primary btn-sm">

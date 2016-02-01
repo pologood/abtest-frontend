@@ -8,16 +8,14 @@ class VariationItem extends React.Component {
 	}
 
 	render() {
-		var buttonClass = "glyphicon glyphicon-trash variation-icon-remove";
-
-		var name = this.props.item.name;
-		if (!name || !name.trim())
-			buttonClass += " disable-variations-btn-remove";
+		var name = this.props.item.name,
+			buttonClass = this._getDeleteButtonClass(name);
 
 		return (
 			<div className="form-group form-variations">
 		        <div className="variations-title">
-		            <input type="text" className="form-control input-sm" ref="name" defaultValue={this.props.item.name} placeholder="Nome da variação" 
+		            <input type="text" className="form-control input-sm" ref="name" 
+		            		defaultValue={name} placeholder="Nome da variação" 
 		            		onChange={this._onChangeName.bind(this)}/>
 		        </div>
 		        <div className="variations-btn-remove">
@@ -25,6 +23,15 @@ class VariationItem extends React.Component {
 		        </div>
 		    </div>
     	);
+	}
+
+	_getDeleteButtonClass(variationName) {
+		var buttonClass = "glyphicon glyphicon-trash variation-icon-remove";
+
+		if (!variationName || !variationName.trim())
+			buttonClass += " disable-variations-btn-remove";
+
+		return buttonClass;
 	}
 
 	_onChangeName(event) {

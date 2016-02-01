@@ -28,16 +28,12 @@ class Experiment extends React.Component {
 	}
 
 	render() {
-		const WhiteItems = require('./ExperimentCreateWhiteListItems.js');
-		var variations = this.state.item.variations,
-			variationsEls = [];
+		const WhiteList = require('./WhiteList.js');
+		var variations = this.state.item.variations || [],
+			variationEls = [];
 
-		if (variations)
-			variations.forEach(variation => {
-				variationsEls.push(
-					<li key={variation.id} className="list-group-item">{variation.name}</li>
-				);
-			});
+		for (let variation of variations)
+			variationEls.push(this._getVariationEl(variation));
 
 		return (
 			<div>
@@ -62,12 +58,12 @@ class Experiment extends React.Component {
 									</div>
 									<div className="form-group">
 										<label htmlFor="recipient-name" className="control-label">Direcionamento</label>
-										<WhiteItems items={this.state.item} hideRemoveBtn={true}/>
+										<WhiteList items={this.state.item} hideRemoveBtn={true}/>
 									</div>
 									<div className="form-group">
 										<label htmlFor="recipient-name" className="control-label">Variações</label>
 										<ul className="list-group">
-											{variationsEls}
+											{variationEls}
 										</ul>
 									</div>
 								</div>
@@ -81,6 +77,10 @@ class Experiment extends React.Component {
 				</Modal>
 			</div>
 		);
+	}
+
+	_getVariationEl(variation) {
+		return <li key={variation.id} className="list-group-item">{variation.name}</li>;
 	}
 
 	_openCreationPage() {
